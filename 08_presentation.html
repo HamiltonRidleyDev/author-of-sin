@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Is God the Author of Sin? — Talk Map</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===== TechSee palette (light) ===== */
+:root{
+  --midnight:#182641; --cerulean:#38bfca; --teal:#1c8a96; --aqua:#42f1f6;
+  --ivory:#efeee5; --paper:#faf9f4; --white:#ffffff;
+  --slate:#56697d; --dim:#8a97a7; --line:#e4e2d6;
+  --green:#00a959; --yellow:#fec938; --orange:#f26e52;
+  --sidebar-w:248px;
+}
+
+html,body{ background:var(--paper); }
+.reveal{
+  font-family:'Inter',sans-serif; font-size:24px; color:var(--midnight);
+  margin-left:var(--sidebar-w);
+}
+.reveal .slides{ text-align:left; }
+.reveal-viewport{
+  background:
+    radial-gradient(820px 460px at 78% -10%, rgba(56,191,202,.16), transparent 60%),
+    radial-gradient(640px 460px at 4% 112%, rgba(66,241,246,.10), transparent 55%),
+    var(--paper);
+}
+
+.reveal h1,.reveal h2,.reveal h3,.reveal h4{
+  font-family:'Exo 2',sans-serif; color:var(--midnight);
+  font-weight:700; letter-spacing:-.3px; line-height:1.08; margin:0 0 .3em;
+}
+.reveal h1{ font-size:2.2em; font-weight:800; }
+.reveal h2{ font-size:1.5em; }
+.reveal h3{ font-size:1.12em; }
+.reveal p,.reveal li{ line-height:1.4; }
+.reveal strong{ color:var(--midnight); }
+.reveal em{ color:var(--teal); font-style:normal; font-weight:600; }
+.reveal a{ color:var(--teal); text-decoration:none; }
+
+.kicker{ font-family:'Exo 2',sans-serif; font-size:.46em; font-weight:700;
+  text-transform:uppercase; letter-spacing:3px; color:var(--teal); display:block; margin-bottom:.7em; }
+.accent{ color:var(--teal); } .cer{ color:var(--cerulean); }
+.orange{ color:var(--orange); } .green{ color:var(--green); }
+.dim{ color:var(--slate); } .tiny{ font-size:.6em; color:var(--dim); line-height:1.4; }
+.lead{ font-size:1.05em; color:var(--midnight); }
+.center{ text-align:center; }
+hr.rule{ border:none; height:3px; width:84px; margin:.35em 0 .7em;
+  background:linear-gradient(90deg,var(--cerulean),var(--aqua)); border-radius:3px; }
+.center hr.rule{ margin-left:auto; margin-right:auto; }
+
+.epi{ font-family:'Exo 2',sans-serif; font-style:italic; font-size:1.05em;
+  color:var(--midnight); border-left:3px solid var(--cerulean); padding:.15em 0 .15em 16px; }
+.epi span{ display:block; font-size:.6em; font-style:normal; color:var(--teal);
+  letter-spacing:2px; text-transform:uppercase; margin-top:.5em; }
+
+/* Cards (title/keys) */
+.cards{ display:grid; gap:14px; margin-top:.5em; }
+.cards.c2{ grid-template-columns:1fr 1fr; }
+.card{ background:var(--white); border:1px solid var(--line); border-top:3px solid var(--cerulean);
+  border-radius:12px; padding:15px 17px; box-shadow:0 6px 18px rgba(24,38,65,.06); }
+.card h3{ font-size:.9em; margin-bottom:.2em; color:var(--midnight); }
+.card p{ font-size:.7em; color:var(--slate); margin:0; line-height:1.45; }
+.card.key{ border:1px solid var(--cerulean); border-top:3px solid var(--cerulean); }
+
+/* ===== Beat two-column layout ===== */
+.beat{ display:grid; grid-template-columns:1.02fr .98fr; gap:24px; align-items:start; }
+.col-points{ min-width:0; }
+.pts{ list-style:none; margin:.15em 0 0; padding:0; }
+.pts li{ position:relative; padding:7px 0 7px 24px; font-size:.76em; border-bottom:1px solid var(--line); }
+.pts li:last-child{ border-bottom:none; }
+.pts li::before{ content:"\25C6"; position:absolute; left:2px; top:8px; color:var(--cerulean); font-size:.62em; }
+.pts li.k::before{ content:"\2605"; color:var(--teal); }
+.pts li.t::before{ content:"\2715"; color:var(--orange); }
+
+/* ===== Scripture panel (refs + text, scrollable) ===== */
+.scripture{ background:var(--white); border:1px solid var(--line); border-radius:12px;
+  padding:12px 6px 12px 15px; box-shadow:0 6px 18px rgba(24,38,65,.06);
+  max-height:560px; overflow-y:auto; }
+.scripture .lbl{ font-family:'Exo 2'; font-size:.5em; font-weight:700; text-transform:uppercase;
+  letter-spacing:2.5px; color:var(--teal); display:block; margin:0 0 8px; position:sticky; top:0;
+  background:var(--white); padding-bottom:5px; }
+.verse{ margin:0 9px 9px 0; padding-left:9px; border-left:2px solid var(--line); }
+.verse.anchor{ border-left-color:var(--cerulean); }
+.verse .ref{ font-family:'Exo 2'; font-weight:700; font-size:.5em; color:var(--teal); display:block; letter-spacing:.3px; }
+.verse.anchor .ref{ color:var(--cerulean); }
+.verse .txt{ font-size:.5em; color:var(--slate); line-height:1.4; display:block; margin-top:1px; }
+.verse .txt .note{ color:var(--dim); font-style:italic; }
+.scripture::-webkit-scrollbar{ width:8px; }
+.scripture::-webkit-scrollbar-thumb{ background:var(--line); border-radius:8px; }
+
+/* Tone flag */
+.flag{ display:inline-block; font-size:.4em; letter-spacing:1.5px; text-transform:uppercase;
+  vertical-align:middle; color:var(--green); border:1px solid var(--green); border-radius:6px; padding:2px 8px; margin-left:9px; }
+.flag.peak{ color:var(--orange); border-color:var(--orange); }
+
+.reveal .slide-number{ background:transparent; color:var(--dim); font-family:'Exo 2'; font-size:13px; }
+.hint{ position:fixed; top:13px; right:18px; z-index:60; font-family:'Exo 2'; font-size:12px; color:var(--dim); letter-spacing:.5px; }
+.hint b{ color:var(--teal); }
+
+/* ===== KEY SIDEBAR ===== */
+.keybar{ position:fixed; left:0; top:0; bottom:0; width:var(--sidebar-w);
+  background:var(--midnight); color:var(--ivory); padding:18px 14px 22px;
+  overflow-y:auto; z-index:50; border-right:3px solid var(--cerulean); }
+.keybar .kb-title{ font-family:'Exo 2'; font-weight:800; font-size:16px; color:#fff; letter-spacing:.3px; }
+.keybar .kb-sub{ font-family:'Exo 2'; font-size:9.5px; color:var(--cerulean); text-transform:uppercase; letter-spacing:2px; margin-bottom:6px; }
+.kb-part{ font-family:'Exo 2'; font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px;
+  color:var(--cerulean); margin:13px 0 4px; padding-bottom:3px; border-bottom:1px solid rgba(56,191,202,.25); }
+.kb-item{ display:block; font-size:11.5px; color:#aeb9c8; padding:4px 8px; border-radius:6px; line-height:1.25; text-decoration:none; margin:1px 0; }
+.kb-item .n{ color:#7e8ca0; font-weight:700; margin-right:5px; }
+.kb-item:hover{ background:rgba(56,191,202,.16); color:#fff; }
+.kb-item.done{ color:#6b7889; opacity:.78; }
+.kb-item.done::before{ content:"\2713\00a0"; color:var(--cerulean); font-weight:700; }
+.kb-item.active{ background:var(--cerulean); color:var(--midnight); font-weight:700; }
+.kb-item.active .n{ color:var(--midnight); }
+.kb-foot{ margin-top:18px; font-size:9.5px; color:#5d6a7d; line-height:1.5; border-top:1px solid rgba(255,255,255,.08); padding-top:10px; }
+.kb-foot b{ color:var(--cerulean); }
+</style>
+</head>
+<body>
+
+<nav class="keybar">
+  <div class="kb-title">The Author of Sin</div>
+  <div class="kb-sub">Talk Map · 18 beats</div>
+
+  <div class="kb-part">✦ Start Here</div>
+  <a class="kb-item" data-id="b0"  href="#/b0"><span class="n">✦</span>Why this matters</a>
+
+  <div class="kb-part">I · Frame</div>
+  <a class="kb-item" data-id="b1"  href="#/b1"><span class="n">1</span>Cold open / callback</a>
+  <a class="kb-item" data-id="b2"  href="#/b2"><span class="n">2</span>The thesis, tight</a>
+  <a class="kb-item" data-id="b3"  href="#/b3"><span class="n">3</span>Changed: “murdered”</a>
+  <a class="kb-item" data-id="b4"  href="#/b4"><span class="n">4</span>Changed: temperament</a>
+
+  <div class="kb-part">II · The Case</div>
+  <a class="kb-item" data-id="b5"  href="#/b5"><span class="n">5</span>The apostles’ grammar</a>
+
+  <div class="kb-part">III · The Crux</div>
+  <a class="kb-item" data-id="b6"  href="#/b6"><span class="n">6</span>The hardest question</a>
+  <a class="kb-item" data-id="b7"  href="#/b7"><span class="n">7</span>Matter vs. form</a>
+  <a class="kb-item" data-id="b8"  href="#/b8"><span class="n">8</span>Sufficient, not infallible</a>
+  <a class="kb-item" data-id="b9"  href="#/b9"><span class="n">9</span>Why the snake?</a>
+  <a class="kb-item" data-id="b10" href="#/b10"><span class="n">10</span>Author, not Pilate ★</a>
+  <a class="kb-item" data-id="b11" href="#/b11"><span class="n">11</span>The seam</a>
+
+  <div class="kb-part">IV · The Flanks</div>
+  <a class="kb-item" data-id="b12" href="#/b12"><span class="n">12</span>Strike the rivals</a>
+  <a class="kb-item" data-id="b13" href="#/b13"><span class="n">13</span>The hard verses</a>
+  <a class="kb-item" data-id="b135" href="#/b135"><span class="n">13.5</span>Narcissism</a>
+
+  <div class="kb-part">V · Payoff</div>
+  <a class="kb-item" data-id="b14" href="#/b14"><span class="n">14</span>Alianna</a>
+  <a class="kb-item" data-id="b15" href="#/b15"><span class="n">15</span>The cross vindicates</a>
+  <a class="kb-item" data-id="b155" href="#/b155"><span class="n">15.5</span>Why evangelize?</a>
+  <a class="kb-item" data-id="b16" href="#/b16"><span class="n">16</span>Invitation</a>
+
+  <div class="kb-foot">← → move · <b>S</b> notes · <b>Esc</b> grid<br>Verses ESV (KJV noted)</div>
+</nav>
+
+<div class="hint"><b>S</b> notes · <b>Esc</b> grid</div>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- TITLE -->
+<section id="title" data-background-gradient="radial-gradient(900px 560px at 65% 0%, rgba(56,191,202,.18), transparent 60%), #faf9f4">
+  <div class="center">
+    <span class="kicker">An Update · Years Later</span>
+    <h1>Is God the Author of Sin?</h1>
+    <hr class="rule">
+    <p class="lead dim">Revisiting the origin of evil — what held, what I refined,<br>and the hardest questions answered.</p>
+    <div class="epi" style="display:inline-block;text-align:left;margin-top:1em">
+      “…the Lamb who was slain from the foundation of the world.”
+      <span>Revelation 13:8</span>
+    </div>
+    <p class="tiny" style="margin-top:1.2em">A follow-up to the original video (EfOFHSePDmk) · this is the update, not a recant.</p>
+  </div>
+  <aside class="notes">Settled, not defensive. ~30s.</aside>
+</section>
+
+<!-- B0 — WHY THIS MATTERS -->
+<section id="b0" data-background-gradient="radial-gradient(900px 560px at 50% 4%, rgba(56,191,202,.18), transparent 60%), #faf9f4">
+  <span class="kicker">Start Here · The Stakes</span>
+  <h2>Why this matters <span class="flag peak">the point · if they watch nothing else</span></h2>
+  <hr class="rule">
+  <div class="beat">
+    <div class="col-points"><ul class="pts">
+      <li>Someday life hands you what you can't carry. Everything hangs on one question: <em>is God in control of this — or not?</em></li>
+      <li>If not: your suffering is random, wasted, no one to carry it to. If so: not random, not wasted — Someone to trust.</li>
+      <li class="k">Not an argument, not a class. Three things you can't live without: <em>how you suffer · whether you can trust God · whether you can have joy.</em></li>
+      <li>Stay through the hard middle — a comfort that isn't <em>true</em> shatters. I want a hope you can stand on at a graveside.</li>
+    </ul></div>
+    <div class="scripture">
+      <span class="lbl">Scripture</span>
+      <div class="verse anchor"><span class="ref">Romans 8:28</span><span class="txt">"And we know that for those who love God all things work together for good, for those who are called according to his purpose."</span></div>
+      <div class="verse"><span class="ref">Romans 8:18</span><span class="txt">"…the sufferings of this present time are not worth comparing with the glory that is to be revealed to us."</span></div>
+      <div class="verse"><span class="ref">James 1:2-3</span><span class="txt">"Count it all joy, my brothers, when you meet trials of various kinds…"</span></div>
+      <div class="verse"><span class="ref">Habakkuk 3:17-18</span><span class="txt">"Though the fig tree should not blossom… yet I will rejoice in the LORD."</span></div>
+    </div>
+  </div>
+  <aside class="notes">The lifeblood. If a viewer watches only this, they get the point: suffering, trust, joy. Keep it universal — don't tell the Alianna story yet.</aside>
+</section>
+
+<!-- B1 -->
+<section id="b1">
+  <span class="kicker">Part I · Frame — Beat 1</span>
+  <h2>Cold open / the callback</h2>
+  <hr class="rule">
+  <div class="beat">
+    <div class="col-points"><ul class="pts">
+      <li>Recorded years ago — then <em>deliberately sat on it</em> to test whether it was a phase.</li>
+      <li>It held. I'd recant none of the heart of it.</li>
+      <li class="k">Three things refined: one word taken back, one word <em>kept</em>, a changed posture.</li>
+      <li>"A belief you've never refined is one you've never really tested."</li>
+    </ul></div>
+    <div class="scripture">
+      <span class="lbl">Scripture</span>
+      <div class="verse"><span class="ref">— no text beat —</span><span class="txt">Framing only; verses begin in Beat 2.</span></div>
+    </div>
+  </div>
+  <aside class="notes">Make revision itself the evidence of seriousness.</aside>
+</section>
+
+<!-- B2 -->
+<section id="b2">
+  <span class="kicker">Part I · Frame — Beat 2</span>
+  <h2>The thesis, tight</h2>
+  <hr class="rule">
+  <div class="beat">
+    <div class="col-points"><ul class="pts">
+      <li>God ordains <em>everything that comes to pass</em> — including sin — to magnify himself.</li>
+      <li>No surprised God. No reactive God. No "small God."</li>
+      <li>Proof it was always the plan: the Lamb slain <em>before</em> the foundation of the world.</li>
+    </ul></div>
+    <div class="scripture">
+      <span class="lbl">Scripture</span>
+      <div class="verse anchor"><span class="ref">Revelation 13:8</span><span class="txt">"…the Lamb who was slain from the foundation of the world." <span class="note">(KJV reading)</span></span></div>
+      <div class="verse"><span class="ref">Romans 9:18</span><span class="txt">"So then he has mercy on whomever he wills, and he hardens whomever he wills."</span></div>
+      <div class="verse"><span class="ref">Ephesians 1:11</span><span class="txt">"…predestined according to the purpose of him who works all things according to the counsel of his will."</span></div>
+      <div class="verse"><span class="ref">Isaiah 53:10</span><span class="txt">"Yet it was the will of the LORD to crush him; he has put him to grief…"</span></div>
+      <div class="verse"><span class="ref">Matthew 26:39</span><span class="txt">"…not as I will, but as you will."</span></div>
+      <div class="verse"><span class="ref">Acts 4:28</span><span class="txt">"…to do whatever your hand and your plan had predestined to take place."</span></div>
+    </div>
+  </div>
+  <aside class="notes">Keep fast — recap. Today is the update.</aside>
+</section>
+
+<!-- B3 -->
+<section id="b3">
+  <span class="kicker">Part I · Frame — Beat 3</span>
+  <h2>What changed #1 — “murdered”</h2>
+  <hr class="rule">
+  <div class="beat">
+    <div class="col-points"><ul class="pts">
+      <li>I retract the <em>word</em>, not the event (the firstborn of Egypt).</li>
+      <li>Murder = <em>unjust</em> killing — it smuggles in a verdict I reject. It was <em>judgment.</em></li>
+      <li class="k">The principle that powers the rest: <em>words carry hidden freight.</em></li>
+    </ul></div>
+    <div class="scripture">
+      <span class="lbl">Scripture</span>
+      <div class="verse anchor"><span class="ref">Exodus 12:29</span><span class="txt">"At midnight the LORD struck down all the firstborn in the land of Egypt…"</span></div>
+      <div class="verse"><span class="ref">Deuteronomy 32:39</span><span class="txt">"…I kill and I make alive; I wound and I heal, and there is none that can deliver out of my hand."</span></div>
+      <div class="verse"><span class="ref">1 Samuel 2:6</span><span class="txt">"The LORD kills and brings to life; he brings down to Sheol and raises up."</span></div>
+    </div>
+  </div>
+  <aside class="notes">This hinge earns the right to operate on the word "author" later.</aside>
+</section>
+
+<!-- B4 -->
+<section id="b4">
+  <span class="kicker">Part I · Frame — Beat 4</span>
+  <h2>What changed — from proving to treasuring</h2>
+  <hr class="rule">
+  <div class="beat">
+    <div class="col-points"><ul class="pts">
+      <li class="k">Watching it back: I was trying to <em>prove I was right</em> — "no way around it," "I'm not afraid to say it." Planting flags.</li>
+      <li>Sovereignty is a <em>treasure to stand on</em>, not a position to defend. "The doctrine hasn't moved — I have."</li>
+      <li>What grew: <em>I am not God</em> → tread carefully → reason to the edge, then name the seam and worship.</li>
+      <li class="k">Tease the second word: "author" — I almost took it back too, and didn't.</li>
+    </ul></div>
+    <div class="scripture">
+      <span class="lbl">Scripture</span>
+      <div class="verse anchor"><span class="ref">Deuteronomy 29:29</span><span class="txt">"The secret things belong to the LORD our God, but the things that are revealed belong to us…"</span></div>
+      <div class="verse"><span class="ref">Isaiah 55:8-9</span><span class="txt">"…as the heavens are higher than the earth, so are my ways higher than your ways and my thoughts than your thoughts."</span></div>
+      <div class="verse"><span class="ref">Romans 11:33</span><span class="txt">"…How unsearchable are his judgments and how inscrutable his ways!"</span></div>
+    </div>
+  </div>
+  <aside class="notes">Plant the seed paid off in Beat 11.</aside>
+</section>
+
+<!-- B5 -->
+<section id="b5">
+  <span class="kicker">Part II · The Case — Beat 5</span>
+  <h2>It's the apostles' grammar</h2>
+  <hr class="rule">
+  <div class="beat">
+    <div class="col-points"><ul class="pts">
+      <li class="k"><strong>Acts 2:23 + 4:27-28</strong> — "the definite plan of God" <em>and</em> "lawless men," one sentence.</li>
+      <li><strong>Gen 50:20</strong> — one act, two intentions, two verdicts.</li>
+      <li><strong>Isa 10</strong> — Assyria the rod: sent, then judged for it.</li>
+      <li><strong>Job</strong> — "the Lord gave and the Lord has taken away."</li>
+    </ul></div>
+    <div class="scripture">
+      <span class="lbl">Scripture</span>
+      <div class="verse anchor"><span class="ref">Acts 2:23</span><span class="txt">"this Jesus, delivered up according to the definite plan and foreknowledge of God, you crucified and killed by the hands of lawless men."</span></div>
+      <div class="verse anchor"><span class="ref">Acts 4:27-28</span><span class="txt">"…Herod and Pontius Pilate… to do whatever your hand and your plan had predestined to take place."</span></div>
+      <div class="verse"><span class="ref">Genesis 50:20</span><span class="txt">"As for you, you meant evil against me, but God meant it for good…"</span></div>
+      <div class="verse"><span class="ref">Isaiah 10:5,15</span><span class="txt">"Ah, Assyria, the rod of my anger…" / "Shall the axe boast over him who hews with it?"</span></div>
+      <div class="verse"><span class="ref">Job 1:21</span><span class="txt">"…The LORD gave, and the LORD has taken away; blessed be the name of the LORD."</span></div>
+      <div class="verse"><span class="ref">Amos 3:6</span><span class="txt">"Does disaster come to a city, unless the LORD has done it?"</span></div>
+      <div class="verse"><span class="ref">Proverbs 16:4</span><span class="txt">"The LORD has made everything for its purpose, even the wicked for the day of trouble."</span></div>
+      <div class="verse"><span class="ref">Lamentations 3:38</span><span class="txt">"Is it not from the mouth of the Most High that good and bad come?"</span></div>
+    </div>
+  </div>
+  <aside class="notes">"Not my framework — the apostles' grammar." Give Acts the most air.</aside>
+</section>
+
+<!-- B6 -->
+<section id="b6">
+  <span class="kicker">Part III · The Crux — Beat 6</span>
+  <h2>The hardest question</h2>
+  <hr class="rule">
+  <div class="beat">
+    <div class="col-points"><ul class="pts">
+      <li>Not "why is there evil" — the <em>origin.</em> Creation was "very good"; Adam was good.</li>
+      <li>So where did the <em>first</em> disordered desire come from?</li>
+      <li class="k">The trap: only three sources — <em>from God</em> / <em>self-originated</em> / <em>brute surd</em> — and most won't say which.</li>
+    </ul></div>
+    <div class="scripture">
+      <span class="lbl">Scripture</span>
+      <div class="verse anchor"><span class="ref">Genesis 1:31</span><span class="txt">"And God saw everything that he had made, and behold, it was very good."</span></div>
+    </div>
+  </div>
+  <aside class="notes">Each naive answer is fatal; the next beats thread between them.</aside>
+</section>
+
+<!-- B7 -->
+<section id="b7">
+  <span class="kicker">Part III · The Crux — Beat 7</span>
+  <h2>Matter vs. form — disordered love</h2>
+  <hr class="rule">
+  <div class="beat">
+    <div class="col-points"><ul class="pts">
+      <li class="k">Creation = God bringing <em>order</em> from the formless (Gen 1:2); sin = <em>de-creation</em>, dis-ordering it. "Sin" = to <em>miss the mark.</em></li>
+      <li>Split the desire: the <em>object</em> was a real good (the fruit <em>was</em> good) — wanting it isn't sin.</li>
+      <li class="k">The evil = the <em>ranking</em>: loving it above God. A ranking is a <em>privation</em> — a lack, like cold or darkness.</li>
+      <li>Iniquity was <em>found</em> in him (not injected). "I will ascend" = a real good loved out of rank.</li>
+      <li>Nothing dark was ever manufactured; evil is parasitic on prior good.</li>
+    </ul></div>
+    <div class="scripture">
+      <span class="lbl">Scripture</span>
+      <div class="verse anchor"><span class="ref">Genesis 1:2, 31</span><span class="txt">"The earth was without form and void, and darkness was over the face of the deep…" → "…it was very good." <span class="note">(God orders the formless; the formless isn't evil)</span></span></div>
+      <div class="verse anchor"><span class="ref">Ezekiel 28:15</span><span class="txt">"You were blameless in your ways from the day you were created, till unrighteousness was found in you."</span></div>
+      <div class="verse anchor"><span class="ref">Isaiah 14:13-14</span><span class="txt">"…I will ascend to heaven; above the stars of God I will set my throne… I will make myself like the Most High."</span></div>
+      <div class="verse"><span class="ref">Genesis 3:6</span><span class="txt">"…the tree was good for food, and… a delight to the eyes, and… to be desired to make one wise…"</span></div>
+      <div class="verse"><span class="ref">James 1:14</span><span class="txt">"But each person is tempted when he is lured and enticed by his own desire."</span></div>
+    </div>
+  </div>
+  <aside class="notes">Master key #2: privation, not substance.</aside>
+</section>
+
+<!-- B8 -->
+<section id="b8">
+  <span class="kicker">Part III · The Crux — Beat 8</span>
+  <h2>Sufficient, not infallible</h2>
+  <hr class="rule">
+  <div class="beat">
+    <div class="col-points"><ul class="pts">
+      <li>Adam had grace <em>sufficient</em> to stand — but not <em>confirming</em> grace (what glorified saints get).</li>
+      <li class="k">God <em>withheld</em> it — an absence, not an infusion.</li>
+      <li>Just (grace is unowed) + guilty (Adam did what he most wanted).</li>
+      <li>Compatibilism: ordained ≠ coerced. Not a puppet — a character acting from his own desire.</li>
+    </ul></div>
+    <div class="scripture">
+      <span class="lbl">Scripture</span>
+      <div class="verse anchor"><span class="ref">1 Timothy 5:21</span><span class="txt">"…in the presence of God and of Christ Jesus and of the elect angels…" <span class="note">(grace that confirms)</span></span></div>
+      <div class="verse"><span class="ref">Philippians 2:12-13</span><span class="txt">"…it is God who works in you, both to will and to work for his good pleasure."</span></div>
+      <div class="verse"><span class="ref">Proverbs 16:9</span><span class="txt">"The heart of man plans his way, but the LORD establishes his steps."</span></div>
+      <div class="verse"><span class="ref">Proverbs 21:1</span><span class="txt">"The king's heart is a stream of water in the hand of the LORD; he turns it wherever he will."</span></div>
+    </div>
+  </div>
+  <aside class="notes">Master key #3: withholding, not injecting.</aside>
+</section>
+
+<!-- B9 -->
+<section id="b9">
+  <span class="kicker">Part III · The Crux — Beat 9</span>
+  <h2>Why was there a snake?</h2>
+  <hr class="rule">
+  <div class="beat">
+    <div class="col-points"><ul class="pts">
+      <li>Satan is an <em>agent of the Lord</em> — never a rival, always on a leash. (Anti-dualism.)</li>
+      <li>But the serpent is <em>already fallen</em> → not the first domino. Satan's fall = same privation story, one level up.</li>
+      <li>The regress bottoms out at the first creature's defection = the floor / the true mystery.</li>
+      <li class="t">Keep Satan <em>guilty</em>: used, not loyal. Serpent = occasion, not cause.</li>
+    </ul></div>
+    <div class="scripture">
+      <span class="lbl">Scripture</span>
+      <div class="verse anchor"><span class="ref">Job 1:12</span><span class="txt">"And the LORD said to Satan, 'Behold, all that he has is in your hand…'" <span class="note">(Satan acts only by permission)</span></span></div>
+      <div class="verse anchor"><span class="ref">2 Samuel 24:1 / 1 Chronicles 21:1</span><span class="txt">"…the LORD… incited David…" / "…Satan… incited David…" <span class="note">(same act, dual agency)</span></span></div>
+      <div class="verse"><span class="ref">1 Kings 22:23</span><span class="txt">"…the LORD has put a lying spirit in the mouth of all these your prophets…"</span></div>
+      <div class="verse"><span class="ref">2 Corinthians 12:7</span><span class="txt">"…a thorn… a messenger of Satan… given me…"</span></div>
+      <div class="verse"><span class="ref">Luke 22:31</span><span class="txt">"…Satan demanded to have you, that he might sift you like wheat."</span></div>
+      <div class="verse"><span class="ref">1 Corinthians 5:5</span><span class="txt">"…deliver this man to Satan… so that his spirit may be saved…"</span></div>
+      <div class="verse"><span class="ref">Genesis 3:1</span><span class="txt">"Now the serpent was more crafty than any other beast… that the LORD God had made."</span></div>
+    </div>
+  </div>
+  <aside class="notes">"Ordained-and-deployed," not "injected." Two senses of "agent."</aside>
+</section>
+
+<!-- B10 -->
+<section id="b10" data-background-gradient="radial-gradient(820px 540px at 50% 6%, rgba(56,191,202,.16), transparent 60%), #faf9f4">
+  <span class="kicker">Part III · The Crux — Beat 10</span>
+  <h2>Author, not Pilate <span class="flag peak">Keystone · slow down</span></h2>
+  <hr class="rule">
+  <div class="beat">
+    <div class="col-points"><ul class="pts">
+      <li><strong>Yes — God is the Author of sin.</strong> The only question is <em>what kind of cause</em> an author is.</li>
+      <li>Pilate drove no nails, only <em>ordained</em> it — and he's guilty. So remoteness never exonerates.</li>
+      <li class="k">The hinge is <em>plane</em>, not distance: Pilate is a <em>character</em>; God is the <em>Author.</em></li>
+      <li>Shakespeare authored Macbeth's murder and is no murderer. Guilt lives on the page.</li>
+      <li>Withholding = <em>mode</em>, not <em>whether</em> (he caused it, and meant to).</li>
+    </ul></div>
+    <div class="scripture">
+      <span class="lbl">Scripture</span>
+      <div class="verse anchor"><span class="ref">Acts 4:27-28</span><span class="txt">"…Herod and Pontius Pilate… to do whatever your hand and your plan had predestined to take place." <span class="note">(ordained + guilty, one sentence)</span></span></div>
+      <div class="verse"><span class="ref">Acts 2:23</span><span class="txt">"…delivered up according to the definite plan… of God, you crucified… by lawless men."</span></div>
+      <div class="verse"><span class="ref">Genesis 50:20</span><span class="txt">"…you meant evil against me, but God meant it for good…"</span></div>
+      <div class="verse"><span class="ref">Isaiah 55:8-9</span><span class="txt">"…my ways higher than your ways…" <span class="note">(the Author is not on our plane)</span></span></div>
+    </div>
+  </div>
+  <aside class="notes">The peak. Less speed, more weight.</aside>
+</section>
+
+<!-- B11 -->
+<section id="b11">
+  <span class="kicker">Part III · The Crux — Beat 11</span>
+  <h2>The seam — name it, then worship</h2>
+  <hr class="rule">
+  <div class="beat">
+    <div class="col-points"><ul class="pts">
+      <li class="k">Not a dark corner — it's Romans <em>8</em>: "all things work together for good," the unbreakable golden chain. Chapter 9 just defends chapter 8.</li>
+      <li>Honest cost: the "plane" distinction isn't airtight to all — but the alternative makes God an idol.</li>
+      <li class="k">Walk the vessel question down: shock is Jacob chosen <em>at all</em>; grace vs. justice; <strong>nobody gets injustice.</strong></li>
+      <li>The passing-over is sovereign; the condemnation rests on <em>real guilt.</em></li>
+      <li>Only the residual "why <em>this</em> soul" is the seam — Rom 9:20 = <em>earned</em> silence, not bullying.</li>
+    </ul></div>
+    <div class="scripture">
+      <span class="lbl">Scripture</span>
+      <div class="verse anchor"><span class="ref">Romans 8:28-30</span><span class="txt">"…all things work together for good… those whom he foreknew he also predestined… called… justified… glorified."</span></div>
+      <div class="verse anchor"><span class="ref">Romans 9:14-15</span><span class="txt">"Is there injustice on God's part? By no means! …'I will have mercy on whom I have mercy…'"</span></div>
+      <div class="verse anchor"><span class="ref">Romans 9:20-21</span><span class="txt">"But who are you, O man, to answer back to God? …Has the potter no right over the clay…?"</span></div>
+      <div class="verse"><span class="ref">Romans 9:22-23</span><span class="txt">"…vessels of wrath prepared for destruction… vessels of mercy, which he prepared beforehand for glory…"</span></div>
+      <div class="verse"><span class="ref">Romans 9:6</span><span class="txt">"…For not all who are descended from Israel belong to Israel."</span></div>
+      <div class="verse"><span class="ref">Romans 9:27</span><span class="txt">"…only a remnant of them will be saved."</span></div>
+      <div class="verse"><span class="ref">Romans 11:33-36</span><span class="txt">"…How unsearchable his judgments!… For from him and through him and to him are all things."</span></div>
+      <div class="verse"><span class="ref">Deuteronomy 29:29</span><span class="txt">"The secret things belong to the LORD our God…"</span></div>
+    </div>
+  </div>
+  <aside class="notes">"Look how far we reasoned before we got there."</aside>
+</section>
+
+<!-- B12 -->
+<section id="b12">
+  <span class="kicker">Part IV · The Flanks — Beat 12</span>
+  <h2>Strike the rival views <span class="flag">names in description</span></h2>
+  <hr class="rule">
+  <div class="beat">
+    <div class="col-points"><ul class="pts">
+      <li><strong>Permission / free-will:</strong> he built the stage &amp; raised the curtain — no clean exit. "Love needs the risk of sin" dies in heaven + the impeccable Christ.</li>
+      <li class="k"><strong>Molinism:</strong> grounding objection — ungrounded counterfactuals = a source God isn't font of. "He prints the deck."</li>
+      <li><strong>Open theism:</strong> then he didn't know whom he died for — only a faceless pool.</li>
+    </ul></div>
+    <div class="scripture">
+      <span class="lbl">Scripture</span>
+      <div class="verse anchor"><span class="ref">Romans 9:16</span><span class="txt">"So then it depends not on human will or exertion, but on God, who has mercy."</span></div>
+      <div class="verse"><span class="ref">Hebrews 4:15</span><span class="txt">"…one who in every respect has been tempted as we are, yet without sin." <span class="note">(love without the possibility of sin)</span></span></div>
+      <div class="verse"><span class="ref">Isaiah 46:9-10</span><span class="txt">"…I am God… declaring the end from the beginning… 'My counsel shall stand…'"</span></div>
+      <div class="verse"><span class="ref">John 10:14-15</span><span class="txt">"I am the good shepherd. I know my own… and I lay down my life for the sheep."</span></div>
+      <div class="verse"><span class="ref">Ephesians 1:11</span><span class="txt">"…him who works all things according to the counsel of his will."</span></div>
+      <div class="verse"><span class="ref">Romans 11:36</span><span class="txt">"For from him and through him and to him are all things."</span></div>
+    </div>
+  </div>
+  <aside class="notes">One clean blow each; door left open.</aside>
+</section>
+
+<!-- B13 -->
+<section id="b13">
+  <span class="kicker">Part IV · The Flanks — Beat 13</span>
+  <h2>The verses that cut against me</h2>
+  <hr class="rule">
+  <div class="beat">
+    <div class="col-points"><ul class="pts">
+      <li><strong>Jas 1:13</strong> → next verse: "his <em>own</em> desire." Forbids blame-shifting, not God's reach into the heart.</li>
+      <li class="k">Guardrail: good is God's <em>nature</em>, not arbitrary will — no voluntarism.</li>
+      <li><strong>1 John 1:5 / Hab 1:13</strong> — character, not decree.</li>
+      <li><strong>Ezek 33:11 / 1 Tim 2:4</strong> — two wills; no pleasure in death <em>as death</em>.</li>
+      <li class="t"><strong>Isa 45:7</strong> — <em>ra</em> = calamity, not moral evil.</li>
+    </ul></div>
+    <div class="scripture">
+      <span class="lbl">Scripture</span>
+      <div class="verse anchor"><span class="ref">James 1:13-14</span><span class="txt">"Let no one say… 'I am being tempted by God'… he himself tempts no one. But each person is tempted… by his own desire."</span></div>
+      <div class="verse"><span class="ref">1 John 1:5</span><span class="txt">"…God is light, and in him is no darkness at all."</span></div>
+      <div class="verse"><span class="ref">Habakkuk 1:13</span><span class="txt">"You who are of purer eyes than to see evil and cannot look at wrong…"</span></div>
+      <div class="verse"><span class="ref">Ezekiel 33:11</span><span class="txt">"…I have no pleasure in the death of the wicked, but that the wicked turn from his way and live…"</span></div>
+      <div class="verse"><span class="ref">1 Timothy 2:4</span><span class="txt">"who desires all people to be saved and to come to the knowledge of the truth."</span></div>
+      <div class="verse"><span class="ref">Isaiah 53:10</span><span class="txt">"…it was the will of the LORD to crush him…" <span class="note">(pleasure in the good it serves)</span></span></div>
+      <div class="verse"><span class="ref">Isaiah 45:7</span><span class="txt">"I form light and create darkness… I make well-being and create calamity…" <span class="note">(KJV: "create evil" — Heb. <i>ra</i> = calamity)</span></span></div>
+      <div class="verse"><span class="ref">James 1:17</span><span class="txt">"Every good gift… is from above… with whom there is no variation or shadow…"</span></div>
+      <div class="verse"><span class="ref">Malachi 3:6</span><span class="txt">"For I the LORD do not change…" <span class="note">(good = his nature)</span></span></div>
+    </div>
+  </div>
+  <aside class="notes">Anchor James in v.14; don't use the wilderness-temptation argument.</aside>
+</section>
+
+<!-- B135 -->
+<section id="b135">
+  <span class="kicker">Part IV · The Flanks — Beat 13.5</span>
+  <h2>"Isn't this just a narcissist?"</h2>
+  <hr class="rule">
+  <div class="beat">
+    <div class="col-points"><ul class="pts">
+      <li>The charge (a <em>motive</em> charge, not a justice one): a glory-seeking God is a cosmic narcissist.</li>
+      <li>Self-glory is vice <em>in us</em> — we're not the highest good, so it's a lie + a theft.</li>
+      <li class="k">In God it's truth + love — he <em>is</em> the highest good; pointing you elsewhere would be the unloving act.</li>
+      <li>Defer the knockout to the cross (Beat 15) — "a fact no narcissist has ever had."</li>
+    </ul></div>
+    <div class="scripture">
+      <span class="lbl">Scripture</span>
+      <div class="verse anchor"><span class="ref">John 12:27-28</span><span class="txt">"…'Father, save me from this hour'? But for this purpose I have come… Father, glorify your name."</span></div>
+      <div class="verse"><span class="ref">Isaiah 48:11</span><span class="txt">"…My glory I will not give to another."</span></div>
+      <div class="verse"><span class="ref">Romans 5:8</span><span class="txt">"…while we were still sinners, Christ died for us."</span></div>
+      <div class="verse"><span class="ref">Romans 5:10</span><span class="txt">"…while we were enemies we were reconciled to God by the death of his Son…"</span></div>
+      <div class="verse"><span class="ref">Philippians 2:5-8</span><span class="txt">"…he humbled himself by becoming obedient to the point of death, even death on a cross."</span></div>
+    </div>
+  </div>
+  <aside class="notes">Lead with the merits, NOT "you're too small to judge."</aside>
+</section>
+
+<!-- B14 -->
+<section id="b14" data-background-gradient="radial-gradient(760px 520px at 18% 100%, rgba(56,191,202,.12), transparent 55%), #faf9f4">
+  <span class="kicker">Part V · Payoff — Beat 14</span>
+  <h2>Why it matters — Alianna <span class="flag peak">the heart · slow, tender</span></h2>
+  <hr class="rule">
+  <div class="beat">
+    <div class="col-points"><ul class="pts">
+      <li>Speak it, don't argue it. From Alianna — the child you lost.</li>
+      <li>Every other view offers only <em>random</em> or <em>wasted</em> — a wound for no reason.</li>
+      <li class="k">This view alone: not an accident, not wasted, <em>not for nothing.</em></li>
+      <li>Not a colder God — the only one strong enough for your worst day.</li>
+    </ul></div>
+    <div class="scripture">
+      <span class="lbl">Scripture</span>
+      <div class="verse anchor"><span class="ref">Romans 8:28</span><span class="txt">"And we know that for those who love God all things work together for good, for those who are called according to his purpose."</span></div>
+      <div class="verse"><span class="ref">Job 1:21</span><span class="txt">"…The LORD gave, and the LORD has taken away; blessed be the name of the LORD."</span></div>
+      <div class="verse"><span class="ref">Genesis 50:20</span><span class="txt">"…God meant it for good…"</span></div>
+      <div class="verse"><span class="ref">2 Corinthians 1:3-4</span><span class="txt">"…the God of all comfort, who comforts us in all our affliction…"</span></div>
+    </div>
+  </div>
+  <aside class="notes">The emotional core. Less syllogism, more presence. Confirm the child's name spelling.</aside>
+</section>
+
+<!-- B15 -->
+<section id="b15" data-background-gradient="radial-gradient(880px 600px at 50% 16%, rgba(56,191,202,.18), transparent 60%), #faf9f4">
+  <span class="kicker">Part V · Payoff — Beat 15</span>
+  <h2>The cross vindicates it <span class="flag peak">peak</span></h2>
+  <hr class="rule">
+  <div class="beat">
+    <div class="col-points"><ul class="pts">
+      <li>A serpent in the garden; a serpent at the cross (Satan entered Judas).</li>
+      <li>The tempter drives the nail that crushes his own head — exactly what God predestined.</li>
+      <li class="k">"Why was there a snake? Because the Lamb was slain before the foundation of the world."</li>
+      <li class="k">Narcissist knockout: every narcissist makes <em>others</em> pay — this God paid <em>himself</em>, dying for his enemies.</li>
+    </ul></div>
+    <div class="scripture">
+      <span class="lbl">Scripture</span>
+      <div class="verse anchor"><span class="ref">Genesis 3:15</span><span class="txt">"…he shall bruise your head, and you shall bruise his heel."</span></div>
+      <div class="verse anchor"><span class="ref">Acts 4:27-28</span><span class="txt">"…to do whatever your hand and your plan had predestined to take place."</span></div>
+      <div class="verse"><span class="ref">Luke 22:3</span><span class="txt">"Then Satan entered into Judas called Iscariot…"</span></div>
+      <div class="verse"><span class="ref">1 Corinthians 2:8</span><span class="txt">"…if they had, they would not have crucified the Lord of glory."</span></div>
+      <div class="verse"><span class="ref">John 12:31-32</span><span class="txt">"…now will the ruler of this world be cast out. And I, when I am lifted up… will draw all people to myself."</span></div>
+      <div class="verse"><span class="ref">Revelation 13:8</span><span class="txt">"…the Lamb who was slain from the foundation of the world."</span></div>
+    </div>
+  </div>
+  <aside class="notes">Cash the Beat 13.5 hook. The cross does triple duty.</aside>
+</section>
+
+<!-- B155 -->
+<section id="b155">
+  <span class="kicker">Part V · Payoff — Beat 15.5</span>
+  <h2>"Then why bother?" — why evangelize</h2>
+  <hr class="rule">
+  <div class="beat">
+    <div class="col-points"><ul class="pts">
+      <li>The fatalism objection: if all is ordained, why preach, pray, try?</li>
+      <li class="k">God ordains <em>ends and means</em> as one package — the elect are saved <em>through</em> the preached gospel.</li>
+      <li>Sovereignty <em>fuels</em> mission, doesn't cancel it — "I endure everything for the sake of the elect."</li>
+    </ul></div>
+    <div class="scripture">
+      <span class="lbl">Scripture</span>
+      <div class="verse anchor"><span class="ref">Romans 10:14,17</span><span class="txt">"How then will they call on him in whom they have not believed?… So faith comes from hearing, and hearing through the word of Christ."</span></div>
+      <div class="verse"><span class="ref">2 Timothy 2:10</span><span class="txt">"Therefore I endure everything for the sake of the elect, that they also may obtain the salvation that is in Christ Jesus…"</span></div>
+      <div class="verse"><span class="ref">Acts 18:9-10</span><span class="txt">"…Do not be afraid… for I have many in this city who are my people."</span></div>
+      <div class="verse"><span class="ref">Philippians 2:12-13</span><span class="txt">"…work out your own salvation… for it is God who works in you…"</span></div>
+    </div>
+  </div>
+  <aside class="notes">The #1 comment on this content. Flow: cross → mission → invitation.</aside>
+</section>
+
+<!-- B16 -->
+<section id="b16">
+  <span class="kicker">Part V · Payoff — Beat 16</span>
+  <h2>Invitation + posture</h2>
+  <hr class="rule">
+  <div class="beat">
+    <div class="col-points"><ul class="pts">
+      <li class="k">Back to the start: this lets you <em>suffer</em> without waste, <em>trust</em> in the dark, and have <em>joy</em> in the storm.</li>
+      <li>Three things refined; substance recanted: none.</li>
+      <li>I want the pushback — <em>especially</em> from those who'll say "author" goes too far.</li>
+      <li class="k">Reason to the edge; worship at the seam. Offer deeper-dive videos on request.</li>
+    </ul></div>
+    <div class="scripture">
+      <span class="lbl">Scripture</span>
+      <div class="verse anchor"><span class="ref">Romans 11:33-36</span><span class="txt">"Oh, the depth of the riches… For from him and through him and to him are all things. To him be glory forever. Amen."</span></div>
+      <div class="verse"><span class="ref">Deuteronomy 29:29</span><span class="txt">"The secret things belong to the LORD our God, but the things that are revealed belong to us…"</span></div>
+      <div class="verse"><span class="ref">James 1:2</span><span class="txt">"Count it all joy, my brothers, when you meet trials of various kinds."</span></div>
+      <div class="verse"><span class="ref">Romans 5:3-5</span><span class="txt">"…we rejoice in our sufferings, knowing that suffering produces endurance…"</span></div>
+      <div class="verse"><span class="ref">Habakkuk 3:17-18</span><span class="txt">"Though the fig tree should not blossom… yet I will rejoice in the LORD."</span></div>
+    </div>
+  </div>
+  <aside class="notes">Close warm and humble — conviction held with an open hand. Return to the three: suffering, trust, joy.</aside>
+</section>
+
+<!-- KEYS -->
+<section id="keys" data-background-gradient="radial-gradient(900px 620px at 50% 18%, rgba(56,191,202,.16), transparent 60%), #faf9f4">
+  <span class="kicker">Keep this open while you record</span>
+  <h2 class="center">The Five Master Keys</h2>
+  <hr class="rule">
+  <div class="cards c2">
+    <div class="card key"><h3>1 · Author, not character</h3><p>God authored sin like Shakespeare authored Macbeth's murder — willing every line, bearing none of the guilt.</p></div>
+    <div class="card key"><h3>2 · Privation, not substance</h3><p>Evil is good loved out of order — a lack, not a thing. You can't manufacture a hole.</p></div>
+    <div class="card key"><h3>3 · Withholding, not injecting</h3><p>He declined to give confirming grace he never owed — not poured evil in.</p></div>
+    <div class="card key"><h3>4 · Grace vs. justice</h3><p>Esau gets justice, Jacob gets mercy, nobody gets injustice. The shock is that anyone is chosen.</p></div>
+  </div>
+  <div class="cards" style="margin-top:13px">
+    <div class="card key center"><h3>5 · Reason to the edge, then worship</h3><p>Reason to the last inch of what's revealed, name the seam precisely — then bow.</p></div>
+  </div>
+  <aside class="notes">Your spine. Full objection armor lives in 07_objection_prep.md.</aside>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash:true, slideNumber:'c/t', transition:'slide', transitionSpeed:'fast',
+    backgroundTransition:'fade', controls:true, progress:false, center:false,
+    width:1180, height:760, margin:0.045,
+    plugins:[ RevealNotes ]
+  });
+
+  const order = ['b0','b1','b2','b3','b4','b5','b6','b7','b8','b9','b10','b11','b12','b13','b135','b14','b15','b155','b16'];
+  const items = {};
+  document.querySelectorAll('.kb-item').forEach(a => { items[a.getAttribute('data-id')] = a; });
+  function updateKey(){
+    const cur = Reveal.getCurrentSlide();
+    const id  = cur ? cur.id : '';
+    const idx = order.indexOf(id);
+    order.forEach((bid,i)=>{
+      const el = items[bid]; if(!el) return;
+      el.classList.remove('done','active','todo');
+      if(idx === -1)      el.classList.add('todo');
+      else if(i < idx)    el.classList.add('done');
+      else if(i === idx)  el.classList.add('active');
+      else                el.classList.add('todo');
+    });
+    const act = document.querySelector('.kb-item.active');
+    if(act) act.scrollIntoView({block:'nearest'});
+  }
+  Reveal.on('ready', updateKey);
+  Reveal.on('slidechanged', updateKey);
+</script>
+</body>
+</html>
