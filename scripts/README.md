@@ -13,10 +13,11 @@ A working repository of script drafts for shaping the final video. Read, compare
 - **`script-A2.md`** — *Anthropic draft 2.* A1 with the delivery-review changes integrated (see changelog).
 - **`script-A3.md`** — *Anthropic draft 3.* Built on A2; refines §6 (truer opening + the "three options" trap), §7 (names Satan), and §12 (a fuller answer to the free-will objection).
 - **`script-A4.md`** — *Anthropic draft 4.* Built on A3; folds in the convergent low-risk wins from the external reviews — a "what this is and isn't" framing line, the analogy marked a *window, not a proof* (§10), a sharper seam line (§11), and a reflective-delivery cue (§12).
-- **`script-A5.md`** — *Anthropic draft 5 (current).* Built on A4; the opening now faces *outward* (the friend you can't comfort) as well as inward — the same question, doubled.
+- **`script-A5.md`** — *Anthropic draft 5.* Built on A4; the opening now faces *outward* (the friend you can't comfort) as well as inward — the same question, doubled.
+- **`script-A6.md`** — *Anthropic draft 6 (current).* A **lean pass** on A5 (same order): trims the Stakes, §3, the §11 vessel-machinery, §12 free-will, §13 (to two verses), and the §16 recap. A few verses/points were pulled from the video — flagged at the top of the file. No concept lost; defensive depth relocated to the description / objection-prep.
 - **`script-X1.md`** — *Grok's refinement of A3.* A near-verbatim A3 with a few small humility/clarity tweaks; the ones worth keeping were folded into A4.
 
-> **Read in a browser:** every Anthropic version ships as an HTML read-through (**`script-A1.html`** … **`script-A5.html`**) — with a beat-by-beat table of contents, runtime estimates, a director-cue toggle, and a teleprompter auto-scroll. Far easier on the eyes than raw markdown. Each version tags its own changed beats (**▲ A2** … **▲ A5**) so you can jump straight to what's new in it. (Open the `.html` files directly in any browser.)
+> **Read in a browser:** every Anthropic version ships as an HTML read-through (**`script-A1.html`** … **`script-A6.html`**) — with a beat-by-beat table of contents, runtime estimates, a director-cue toggle, and a teleprompter auto-scroll. Far easier on the eyes than raw markdown. Each version tags its own changed beats (**▲ A2** … **▲ A6**) so you can jump straight to what's new in it. (Open the `.html` files directly in any browser.)
 
 ---
 
@@ -79,3 +80,20 @@ A single, surgical change:
 - **Stakes opening reframed outward + inward.** A4 (and every version before it) framed the hook as *self*-talk — what will happen to *you*, what *you* will ask. A5 keeps that and braids in the more common entry point: *you'll be the one standing beside someone you love, desperate to say something true and not knowing what.* The same question — *is God in control of this?* — now does double duty: the one *they* ask you without a word, and the one *you* ask at three in the morning. It widens the door (most people meet this as the helpless comforter first) and it sets up the "no sweet lies" thesis. Kept pastoral, **not** combative — it's about having something *true to offer*, never a rebuttal to deploy on the grieving. The cold hook is untouched.
 
 **Added — the closing bookend.** The close now pays off the outward opening: *"remember where we started — you in a room beside someone you love, desperate to say something true… so the next time you're standing in that room, you won't be empty-handed."* So A5 both *opens* and *lands* on the comforter who finally has something true to give. Placed as the capstone of the close (right after "do the next right thing; leave the rest to him"), before the comment invitation.
+
+---
+
+## Changelog — A5 → A6 (the lean pass)
+
+A6 keeps A5's **order and every concept** but trims execution for focus and length. The **§10→§11 keystone→seam pairing is preserved** — which is *why* I did **not** do the flanks-before-seam reorder (it would have split that confident-resolution → humble-seam pivot). Trims:
+
+- **Stakes** — framing + "stay with me" merged into one beat.
+- **§3 (murdered)** — ~40% shorter.
+- **§11 (seam)** — vessel *machinery* (preterition/condemnation) cut to its grace-vs-justice essence; Romans 9 + the worship landing untouched.
+- **§12 (free-will)** — five moves → three (the three witnesses + the freedom-reframe).
+- **§13 (hard verses)** — cut to **James 1:13** + the **two-wills / Isaiah 53.**
+- **§16 (close)** — the "three changes" recap dropped; the posture line kept.
+
+**⚠ Pulled from the video — re-evaluate (add back, or address in the description / objection-prep):** **1 John 1:5** and **Habakkuk 1:13** (redundant with §10's Author/character resolution), **Isaiah 45:7** (defensive housekeeping), the **voluntarism guardrail** ("would evil be good if commanded?" — a concept, not a verse), and the **natural-evil jab** in §12 (was optional; links to Alianna). All listed at the top of `script-A6.md`.
+
+**Not done (held for a later pass):** a light repetition trim, prose-tightening in §4/§5, and the flanks-before-seam reorder (rejected on purpose — see above).
