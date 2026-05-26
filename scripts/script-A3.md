@@ -6,6 +6,7 @@
 > - **§6** — opening made truer (it "didn't shake my faith"; no more "almost undid me"), and the *three-options* trap fixed: my answer isn't a hidden fourth box — each of the three is "half poison, half truth," and the real answer braids the surviving halves together (previews §7–§10).
 > - **§7** — Ezekiel 28 now names *Satan* (the power behind the king of Tyre), so listeners aren't lost.
 > - **§12** — the free-will / "we'd be robots" objection (the #1 thing people say about suffering) answered far more fully: God himself + heaven + Christ as three witnesses, freedom reframed (ability to sin = the crack, not the crown), plus an optional natural-evil jab that links to Alianna.
+> - **§16** — a practical, universal close added after the family benediction: release control of *outcomes*, do what's right, endure cost with joy, and learn contentment in serving a good, all-knowing, all-powerful, all-loving God. ("Do the next right thing. Leave the rest to him.") Beat 6's opening also softened further — now plain *duration* ("the one I've spent the longest wrestling with"), no intensity language.
 
 ---
 
@@ -71,7 +72,7 @@ And it isn't just there. Joseph tells his brothers, "you meant evil against me, 
 
 ## 6. THE HARDEST QUESTION
 
-Here's the question that, for years, I've watched people throw at this position too lightly — and the one that pressed me harder than any other. I'm not going to overstate it and tell you it shook my faith; it didn't. But I couldn't answer it with a slogan, and I wouldn't let myself try. I had to take it all the way down to the bottom — and what I found at the bottom turned out to be the most solid ground I've got.
+Here's the question that, for years, I've watched people throw at this position too lightly — and the one I've spent the longest wrestling with myself. I'm not going to overstate it and tell you it shook my faith; it didn't. But it's not one you can answer with a slogan, and I wouldn't let myself try. I sat with it for a long time, and I followed it all the way down to the bottom — and what I found at the bottom turned out to be the most solid ground I've got.
 
 It's not "why is there evil." That's the easy version. The hard version is about the *origin.* God made everything "very good." Adam was good — no sin nature, rightly ordered, walking with God. So where in the world did the *first* disordered desire come from? Where does evil get its start inside a good creature, in a good creation, made by a good God?
 
@@ -234,6 +235,8 @@ So — three things changed. I took back "murdered." I kept "author," and told y
 And let me bring it back to where we started, because this was never about winning an argument. If God authors the whole story — every line of it, even the darkest — then three things become possible that are impossible any other way. You can walk *through* suffering without it ever being wasted. You can *trust* him in the dark, because the dark is his too. And you can have *joy* — not in spite of this, but *because* of it — the kind that doesn't wait for the storm to pass. Scripture tells you to count it joy when you meet trials, to rejoice even in suffering, to say with Habakkuk, "though the fig tree does not blossom... yet I will rejoice in the Lord." That is not a colder faith. It is the only one strong enough to sing in the storm.
 
 *[Optional, for family — keep or cut:]* And if I can say one thing to my own — if one of my children, or my wife, is ever watching this when I'm not in the room: of everything I could ever leave you, this is what I most want you to have. Not my arguments. *This.* The God who authored the story, who never wastes a wound, who is the floor under your very worst day. Stand on him.
+
+And to the rest of you — here is how you actually live in a world like this. Stop trying to control the outcome; that was never your job, it's his. Your job is to do what's right and leave the results in his hands. If doing right costs you — if obedience brings pain — endure it, and endure it with joy, because you know whose hands you're in. And if it costs you nothing, take that with the same open hand. We are not God. We don't get to write the ending, and we were never meant to. So learn to be content — no matter what you think the future holds, or even what you're sure it holds — content to serve, faithfully, a God who is good, and all-knowing, and all-powerful, and all-loving. Do the next right thing. Leave the rest to him.
 
 If you think I've got it wrong — *especially* if you think "author" goes too far — I genuinely want to hear it in the comments. Tell me where you think I've missed it. And if you want me to go deeper on any one piece of this — the free-will stuff, the problem of why God chooses one and not another, any of it — say so, and I'll do a whole video on it.
 
