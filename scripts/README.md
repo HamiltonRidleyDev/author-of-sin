@@ -12,10 +12,11 @@ A working repository of script drafts for shaping the final video. Read, compare
 - **`script-A1.md`** — *Anthropic draft 1.* The baseline: a verbatim snapshot of the script we built together (identical to the repo's top-level `06_script_draft.md`).
 - **`script-A2.md`** — *Anthropic draft 2.* A1 with the delivery-review changes integrated (see changelog).
 - **`script-A3.md`** — *Anthropic draft 3.* Built on A2; refines §6 (truer opening + the "three options" trap), §7 (names Satan), and §12 (a fuller answer to the free-will objection).
-- **`script-A4.md`** — *Anthropic draft 4 (current).* Built on A3; folds in the convergent low-risk wins from the external reviews — a "what this is and isn't" framing line, the analogy marked a *window, not a proof* (§10), a sharper seam line (§11), and a reflective-delivery cue (§12).
+- **`script-A4.md`** — *Anthropic draft 4.* Built on A3; folds in the convergent low-risk wins from the external reviews — a "what this is and isn't" framing line, the analogy marked a *window, not a proof* (§10), a sharper seam line (§11), and a reflective-delivery cue (§12).
+- **`script-A5.md`** — *Anthropic draft 5 (current).* Built on A4; the opening now faces *outward* (the friend you can't comfort) as well as inward — the same question, doubled.
 - **`script-X1.md`** — *Grok's refinement of A3.* A near-verbatim A3 with a few small humility/clarity tweaks; the ones worth keeping were folded into A4.
 
-> **Read in a browser:** every Anthropic version ships as an HTML read-through (**`script-A1.html`** … **`script-A4.html`**) — with a beat-by-beat table of contents, runtime estimates, a director-cue toggle, and a teleprompter auto-scroll. Far easier on the eyes than raw markdown. Each version tags its own changed beats (**▲ A2**, **▲ A3**, **▲ A4**) so you can jump straight to what's new in it. (Open the `.html` files directly in any browser.)
+> **Read in a browser:** every Anthropic version ships as an HTML read-through (**`script-A1.html`** … **`script-A5.html`**) — with a beat-by-beat table of contents, runtime estimates, a director-cue toggle, and a teleprompter auto-scroll. Far easier on the eyes than raw markdown. Each version tags its own changed beats (**▲ A2** … **▲ A5**) so you can jump straight to what's new in it. (Open the `.html` files directly in any browser.)
 
 ---
 
@@ -68,3 +69,13 @@ All three reviewers flagged the same risk: as objection-handling accumulates, th
 ### External review files in the repo
 - **`scripts/script-X1.md`** — Grok's near-verbatim refinement of A3.
 - **`07_C1_chatgpt_revision_notes.md`** (repo root) — ChatGPT's recommendations (a craft/delivery review, not a theology review).
+
+---
+
+## Changelog — A4 → A5
+
+A single, surgical change:
+
+- **Stakes opening reframed outward + inward.** A4 (and every version before it) framed the hook as *self*-talk — what will happen to *you*, what *you* will ask. A5 keeps that and braids in the more common entry point: *you'll be the one standing beside someone you love, desperate to say something true and not knowing what.* The same question — *is God in control of this?* — now does double duty: the one *they* ask you without a word, and the one *you* ask at three in the morning. It widens the door (most people meet this as the helpless comforter first) and it sets up the "no sweet lies" thesis. Kept pastoral, **not** combative — it's about having something *true to offer*, never a rebuttal to deploy on the grieving. The cold hook is untouched.
+
+*Optional, not yet added:* a closing **bookend** — "…so that when you're the one standing in that room, you'll have something true to put in their hands" — to pay off the new outward opening at the very end. Say the word and I'll add it.
