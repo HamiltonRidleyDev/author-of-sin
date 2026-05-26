@@ -11,6 +11,8 @@ A working repository of script drafts for shaping the final video. Read, compare
 - **`script-A1.md`** — *Anthropic draft 1.* The baseline: a verbatim snapshot of the script we built together (identical to the repo's top-level `06_script_draft.md`).
 - **`script-A2.md`** — *Anthropic draft 2.* A1 with the delivery-review changes integrated (see changelog).
 
+> **Read in a browser:** every version also ships as an HTML read-through — **`script-A1.html`** and **`script-A2.html`** — with a beat-by-beat table of contents, per-beat + total runtime estimates, a director-cue toggle, and a teleprompter auto-scroll. Far easier on the eyes than raw markdown. The A2 page tags its changed beats with **▲ A2**. (Open the `.html` files directly in any browser.)
+
 ---
 
 ## Changelog — A1 → A2
