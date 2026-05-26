@@ -10,6 +10,7 @@ A working repository of script drafts for shaping the final video. Read, compare
 ## Versions
 - **`script-A1.md`** — *Anthropic draft 1.* The baseline: a verbatim snapshot of the script we built together (identical to the repo's top-level `06_script_draft.md`).
 - **`script-A2.md`** — *Anthropic draft 2.* A1 with the delivery-review changes integrated (see changelog).
+- **`script-A3.md`** — *Anthropic draft 3 (current working draft).* Built on A2; refines §6 (truer opening + the "three options" trap), §7 (names Satan), and §12 (a fuller answer to the free-will objection).
 
 > **Read in a browser:** every version also ships as an HTML read-through — **`script-A1.html`** and **`script-A2.html`** — with a beat-by-beat table of contents, per-beat + total runtime estimates, a director-cue toggle, and a teleprompter auto-scroll. Far easier on the eyes than raw markdown. The A2 page tags its changed beats with **▲ A2**. (Open the `.html` files directly in any browser.)
 
@@ -32,5 +33,15 @@ A working repository of script drafts for shaping the final video. Read, compare
 ### Unchanged
 - The doctrine, the argument, the two peaks (Author/Pilate; Alianna/cross), and the beat order otherwise.
 
-### Considered, not done (candidate for A3)
+### Considered, not done (still open for a future version)
 - Moving the "flanks" (rival views + hard verses) to *before* the seam, so all the head-work is grouped and the seam becomes the capstone of the whole case. A bigger structural swing — left for a future version to weigh.
+
+---
+
+## Changelog — A2 → A3
+
+A3 keeps everything in A2 and adds three changes:
+
+- **§6 (The hardest question) — truer opening + the "three options" trap fixed.** A1/A2 said the question "almost undid me," which overstated it; A3 says plainly it *didn't* shake my faith, but pressed me harder than any other — and the bottom of it turned out to be "the most solid ground I've got." And the three-options setup (which knocked down all three while my actual answer was *none* of them) is reframed: A3 explicitly flags that my answer isn't one of the three — on purpose — and that each of the three is **"half poison, half truth."** The real answer braids the surviving halves (God *ordained* it · the evil is the *creature's own* · there's a real *floor* we can't see past), previewing §7–§10. The "feel the blade on each" design is kept.
+- **§7 (Matter vs. form) — Ezekiel 28 now names Satan.** A2 said "the power behind the king of Tyre"; A3 spells out that this passage, spoken to the king of Tyre, has long been read as a window into the fall of *Satan himself* — so listeners aren't lost.
+- **§12 (Rival views) — the free-will / "we'd be robots" objection answered far more fully.** A2 used two witnesses (heaven, Christ). A3 leads with the strongest — *God himself* (the freest, most loving being who exists cannot sin and never could) — with heaven and Christ as the two witnesses beneath it; reframes freedom (the power to sin is the **crack**, not the crown — "the freest you'll ever be is the day you finally *can't*"); names the false **robot** dichotomy outright; and adds an *optional* natural-evil jab (the free-will answer can't touch a miscarriage — *mine can*) that links straight to the Alianna beat.

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Author of Sin — Script A3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --midnight:#182641; --cerulean:#38bfca; --teal:#1c8a96; --aqua:#42f1f6;
+  --ivory:#efeee5; --paper:#faf9f4; --white:#ffffff;
+  --slate:#56697d; --dim:#8a97a7; --line:#e4e2d6;
+  --green:#00a959; --yellow:#fec938; --orange:#f26e52;
+  --rs:22px;            /* reading font-size, adjustable */
+  --toc-w:250px; --bar-h:54px;
+}
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{ margin:0; background:var(--paper); color:var(--midnight);
+  font-family:'Inter',sans-serif; }
+
+/* ===== Top toolbar ===== */
+.topbar{ position:fixed; top:0; left:0; right:0; height:var(--bar-h); z-index:100;
+  background:var(--midnight); color:#fff; display:flex; align-items:center; gap:18px;
+  padding:0 18px; box-shadow:0 2px 14px rgba(24,38,65,.25); }
+.topbar .brand{ font-family:'Exo 2'; font-weight:800; font-size:15px; letter-spacing:.3px; white-space:nowrap; }
+.topbar .brand span{ color:var(--cerulean); }
+.topbar .spacer{ flex:1; }
+.ctrl{ display:flex; align-items:center; gap:7px; font-family:'Exo 2'; font-size:11px;
+  text-transform:uppercase; letter-spacing:1px; color:#aeb9c8; }
+.btn{ font-family:'Exo 2'; font-weight:700; font-size:12px; color:#fff; background:rgba(255,255,255,.08);
+  border:1px solid rgba(56,191,202,.4); border-radius:7px; padding:6px 11px; cursor:pointer; letter-spacing:.5px; }
+.btn:hover{ background:rgba(56,191,202,.22); }
+.btn.on{ background:var(--cerulean); color:var(--midnight); border-color:var(--cerulean); }
+.topbar input[type=range]{ width:90px; accent-color:var(--cerulean); }
+.total-rt{ font-family:'Exo 2'; font-size:12px; color:var(--cerulean); white-space:nowrap; }
+
+/* ===== Layout ===== */
+.layout{ display:flex; padding-top:var(--bar-h); }
+.toc{ position:fixed; top:var(--bar-h); bottom:0; left:0; width:var(--toc-w);
+  background:var(--midnight); color:var(--ivory); overflow-y:auto; padding:16px 12px 30px; z-index:50; }
+.toc .tt{ font-family:'Exo 2'; font-size:10px; text-transform:uppercase; letter-spacing:2px;
+  color:var(--cerulean); margin:14px 0 5px; padding-bottom:3px; border-bottom:1px solid rgba(56,191,202,.25); }
+.toc a{ display:flex; gap:7px; align-items:baseline; font-size:12px; color:#aeb9c8; text-decoration:none;
+  padding:5px 8px; border-radius:6px; line-height:1.25; }
+.toc a .n{ color:#7e8ca0; font-weight:700; font-family:'Exo 2'; min-width:26px; }
+.toc a:hover{ background:rgba(56,191,202,.16); color:#fff; }
+.toc a.active{ background:var(--cerulean); color:var(--midnight); font-weight:700; }
+.toc a.active .n{ color:var(--midnight); }
+.toc a .rt{ margin-left:auto; font-size:10px; color:#6b7889; font-family:'Exo 2'; }
+
+/* ===== Reading column ===== */
+.reading{ margin-left:var(--toc-w); flex:1; display:flex; justify-content:center; padding:34px 40px 60vh; }
+.doc{ width:100%; max-width:760px; }
+
+.doc-head{ border-bottom:2px solid var(--line); padding-bottom:18px; margin-bottom:26px; }
+.doc-head .kick{ font-family:'Exo 2'; font-size:12px; font-weight:700; text-transform:uppercase;
+  letter-spacing:3px; color:var(--teal); }
+.doc-head h1{ font-family:'Exo 2'; font-weight:800; font-size:34px; margin:.25em 0 .15em; color:var(--midnight); letter-spacing:-.5px; }
+.doc-head p{ color:var(--slate); font-size:15px; margin:.2em 0; }
+.legend{ display:flex; gap:18px; flex-wrap:wrap; margin-top:12px; font-size:12px; color:var(--slate); }
+.legend span b{ color:var(--midnight); }
+
+.beat{ margin:0 0 40px; scroll-margin-top:70px; }
+.beat-h{ display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-left:4px solid var(--cerulean); padding:2px 0 2px 14px; margin-bottom:6px; }
+.beat-h .bn{ font-family:'Exo 2'; font-weight:800; font-size:13px; color:var(--cerulean); letter-spacing:1px; }
+.beat-h h2{ font-family:'Exo 2'; font-weight:700; font-size:24px; margin:0; color:var(--midnight); letter-spacing:-.3px; }
+.beat-meta{ font-family:'Exo 2'; font-size:11px; color:var(--dim); text-transform:uppercase; letter-spacing:1.2px;
+  margin:0 0 14px 18px; }
+.beat-meta .pk{ color:var(--orange); font-weight:700; }
+.beat-meta a{ color:var(--teal); text-decoration:none; }
+
+.script{ font-size:var(--rs); line-height:1.72; color:#222b38; }
+.script p{ margin:0 0 1.05em; }
+.script em{ color:var(--teal); font-style:normal; font-weight:600; }
+.script strong{ color:var(--midnight); font-weight:700; }
+.script .sc+,.script .sc{ }
+/* spoken-quote (scripture / quoted speech) */
+.q{ color:var(--midnight); }
+/* director cue */
+.cue{ display:inline-block; font-family:'Exo 2'; font-size:.72em; font-weight:600; font-style:italic;
+  color:var(--orange); background:rgba(242,110,82,.08); border:1px solid rgba(242,110,82,.3);
+  border-radius:6px; padding:1px 9px; margin:.1em 0; letter-spacing:.2px; }
+.cue::before{ content:"▸ "; }
+.cue.block{ display:block; width:fit-content; margin:.2em 0 1em; }
+/* personalize slot */
+.fill{ background:rgba(254,201,56,.35); border-bottom:2px solid var(--yellow); padding:0 3px; border-radius:3px; font-weight:600; }
+
+/* edit notes block */
+.editnotes{ margin-top:50px; background:var(--white); border:1px solid var(--line);
+  border-top:3px solid var(--cerulean); border-radius:12px; padding:20px 24px; box-shadow:0 6px 18px rgba(24,38,65,.06); }
+.editnotes h3{ font-family:'Exo 2'; margin:0 0 .5em; color:var(--midnight); font-size:16px; }
+.editnotes ul{ margin:0; padding-left:18px; }
+.editnotes li{ font-size:14px; color:var(--slate); line-height:1.55; margin-bottom:8px; }
+.editnotes strong{ color:var(--midnight); }
+
+/* hide cues / notes when toggled */
+body.hide-notes .cue,
+body.hide-notes .beat-meta,
+body.hide-notes .editnotes{ display:none; }
+
+@media print{
+  .topbar,.toc{ display:none; }
+  .reading{ margin-left:0; padding:0; }
+  body{ background:#fff; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Toolbar ===== -->
+<div class="topbar">
+  <div class="brand">Author of Sin · <span>Script A3 — current</span></div>
+  <div class="spacer"></div>
+  <div class="ctrl">Text <button class="btn" id="aMinus">A−</button><button class="btn" id="aPlus">A+</button></div>
+  <div class="ctrl"><button class="btn on" id="notesToggle">Director cues: on</button></div>
+  <div class="ctrl">Teleprompter <button class="btn" id="play">▶ Play</button>
+    <input type="range" id="speed" min="0.4" max="4" step="0.2" value="1.4" title="scroll speed"></div>
+  <div class="total-rt" id="totalRt">~— min</div>
+</div>
+
+<div class="layout">
+
+  <!-- ===== TOC ===== -->
+  <nav class="toc" id="toc">
+    <div class="tt">✦ Start Here</div>
+    <a href="#b0"><span class="n">✦</span><span>Why this matters</span><span class="rt"></span></a>
+    <div class="tt">I · Frame</div>
+    <a href="#b1"><span class="n">1</span><span>Cold open / callback</span><span class="rt"></span></a>
+    <a href="#b2"><span class="n">2</span><span>The thesis, restated</span><span class="rt"></span></a>
+    <a href="#b3"><span class="n">3</span><span>Changed: “murdered”</span><span class="rt"></span></a>
+    <a href="#b4"><span class="n">4</span><span>Changed: temperament</span><span class="rt"></span></a>
+    <div class="tt">II · The Case</div>
+    <a href="#b5"><span class="n">5</span><span>The apostles’ grammar</span><span class="rt"></span></a>
+    <div class="tt">III · The Crux</div>
+    <a href="#b6"><span class="n">6</span><span>The hardest question</span><span class="rt"></span></a>
+    <a href="#b7"><span class="n">7</span><span>Matter vs. form</span><span class="rt"></span></a>
+    <a href="#b8"><span class="n">8</span><span>Sufficient, not infallible</span><span class="rt"></span></a>
+    <a href="#b9"><span class="n">9</span><span>Why the snake?</span><span class="rt"></span></a>
+    <a href="#b10"><span class="n">10</span><span>Author, not Pilate ★</span><span class="rt"></span></a>
+    <a href="#b11"><span class="n">11</span><span>The seam</span><span class="rt"></span></a>
+    <a href="#b115"><span class="n">11.5</span><span>Where this lives ▲</span><span class="rt"></span></a>
+    <div class="tt">IV · The Flanks</div>
+    <a href="#b12"><span class="n">12</span><span>Strike the rivals</span><span class="rt"></span></a>
+    <a href="#b13"><span class="n">13</span><span>The hard verses</span><span class="rt"></span></a>
+    <a href="#b135"><span class="n">13.5</span><span>Narcissism</span><span class="rt"></span></a>
+    <div class="tt">V · Payoff</div>
+    <a href="#b14"><span class="n">14</span><span>Alianna</span><span class="rt"></span></a>
+    <a href="#b15"><span class="n">15</span><span>The cross vindicates</span><span class="rt"></span></a>
+    <a href="#b155"><span class="n">15.5</span><span>Why evangelize?</span><span class="rt"></span></a>
+    <a href="#b16"><span class="n">16</span><span>Invitation + posture</span><span class="rt"></span></a>
+  </nav>
+
+  <!-- ===== Reading column ===== -->
+  <main class="reading">
+  <div class="doc">
+
+    <div class="doc-head">
+      <div class="kick">Update Video · Script Version A3 — current</div>
+      <h1>Is God the Author of Sin? — Years Later</h1>
+      <p>Full spoken script, beat by beat. <strong>A3</strong> builds on A2 — changelog in <code>scripts/README.md</code>. (New A3 edits are tagged <span style="color:#1c8a96;font-weight:700">▲ A3</span>; A2's earlier tags remain <span style="color:#1c8a96;font-weight:700">▲ A2</span>.)</p>
+      <p style="margin-top:6px"><strong>Versions:</strong> <a href="script-A1.html">A1 — baseline</a> &nbsp;·&nbsp; <a href="script-A2.html">A2 — revised</a> &nbsp;·&nbsp; <a href="script-A3.html">A3 — current</a> &nbsp;—&nbsp; you're reading <strong>A3</strong>.</p>
+      <div class="legend">
+        <span><b class="fill">[bracket]</b> = personalize / decide</span>
+        <span><b class="cue" style="margin:0">▸ cue</b> = delivery note (not spoken)</span>
+        <span><b>Director cues</b> toggle hides them for a clean read.</span>
+      </div>
+    </div>
+
+    <!-- B0 — WHY THIS MATTERS -->
+    <section class="beat" id="b0">
+      <div class="beat-h"><span class="bn">OPEN</span><h2>Why this matters — the stakes</h2></div>
+      <div class="beat-meta"><span class="pk">The lifeblood · start here</span> &nbsp;·&nbsp; <a href="../08_presentation.html#/b0">slide ›</a> &nbsp;·&nbsp; <span class="rtm"></span></div>
+      <div class="script">
+        <p><span class="cue block">▲ A2 — opens cold, hook first (no throat-clearing). Warm, direct, unhurried.</span></p>
+        <p>Somewhere down the road, life is going to hand you something you cannot carry. A diagnosis. A phone call in the middle of the night. A loss you never saw coming. And when it comes, everything is going to hang on one question — whether you've ever put it into words or not: <em>is God actually in control of this? Or not?</em></p>
+        <p>If you only have two minutes with me today, this is the part you need to hear. Because if he's <em>not</em> — if evil just happens, if your suffering slipped past him while he wasn't watching — then what you're holding in that moment is random. Wasted. A wound for no reason, with no one to carry it to. But if he <em>is</em> — if even <em>this</em> is somehow held in his hands — then it is not random, it is not wasted, and there is Someone strong enough to trust with it.</p>
+        <p>So this was never about winning an argument, and it isn't a theology class. It's about three things you cannot live without — and every one of them rests on this single question. <em>How you walk through suffering</em> — whether it crushes you or holds you. <em>Whether you can trust God</em> — even when, for a season, he looks like he is against you. And <em>whether you can have joy</em> — real, unforced joy — when life is hard and nothing makes sense.</p>
+        <p>So stay with me — even through the hard thinking in the middle, and there will be some. Because a comfort that isn't <em>true</em> is no comfort at all; it shatters the first time you lean your weight on it. I'm not going to hand you a sweet lie. I want to give you a hope solid enough to stand on at a graveside. We're going to go all the way down to the bottom of this — and then I'm going to show you why it is the most comforting truth in all the world.</p>
+      </div>
+    </section>
+
+    <!-- B1 -->
+    <section class="beat" id="b1">
+      <div class="beat-h"><span class="bn">BEAT 1</span><h2>Cold open / callback</h2></div>
+      <div class="beat-meta">Part I · Frame &nbsp;·&nbsp; <a href="../08_presentation.html#/b1">slide ›</a> &nbsp;·&nbsp; <span class="rtm"></span></div>
+      <div class="script">
+        <p>A number of years ago I sat down and recorded a video on one of the hardest questions a Christian can ask: <em>is God the author of sin?</em> Is he responsible for evil? And then I did something on purpose with it — I mostly sat on it. I left it alone. Because I wanted to know something. I wanted to know if what I believed was a phase — a hot take I hadn't really thought through, something that sounded clever at the time but wouldn't survive a few years of life, a few years of pushback, a few years of me actively trying to find the holes in it.</p>
+        <p>So I sat on it. I got feedback. I went after the truth on this as hard as I know how. And here I am, years later, to tell you: it held. The core of what I said then, I still believe now. I wouldn't recant the heart of it.</p>
+        <p>But three things have changed. One word I'm taking back. One word I almost took back — and then realized I should <em>keep</em>, and say even more carefully. And the third change isn't about the content at all. It's about me. So let's walk through it.</p>
+        <p><span class="cue">Beat. Then:</span> Because here's what I've come to believe: a conviction you've never refined is a conviction you've never really tested.</p>
+      </div>
+    </section>
+
+    <!-- B2 -->
+    <section class="beat" id="b2">
+      <div class="beat-h"><span class="bn">BEAT 2</span><h2>The thesis, restated</h2></div>
+      <div class="beat-meta">Part I · Frame &nbsp;·&nbsp; <a href="../08_presentation.html#/b2">slide ›</a> &nbsp;·&nbsp; <span class="rtm"></span></div>
+      <div class="script">
+        <p>Let me say the claim as plainly as I can, for anyone who hasn't seen the first video — and I'll link it below; go watch it, because today is the <em>update.</em></p>
+        <p>Here it is: God ordains everything that comes to pass. Everything. Including sin. Not because he's evil — but because he is magnifying himself, teaching us who he is, in a way we could never see otherwise. Without sin you never see his justice. You never feel the depth of his mercy. You never understand grace. There are no surprises for God. He is not looking down the corridors of time, learning what his creatures will do, hoping they'll choose right. He is the font of all knowledge — everything that is true is true because he made it so.</p>
+        <p>And the proof that this was the plan all along? Revelation says the Lamb was slain <em>before the foundation of the world.</em> The cross wasn't God's backup plan after things went wrong. Before the first plant broke the soil, before Adam drew his first breath, the dying of the Lamb was already the plan. Which means sin entering the world was not a surprise he reacted to. It was written in.</p>
+        <p>A God who's always reacting — <span class="q">"oh no, that happened, I'll fix it next time"</span> — that's a small God. That's not the God of the Bible. The God of the Bible ordained the whole thing.</p>
+      </div>
+    </section>
+
+    <!-- B3 -->
+    <section class="beat" id="b3">
+      <div class="beat-h"><span class="bn">BEAT 3</span><h2>What changed #1 — “murdered”</h2></div>
+      <div class="beat-meta">Part I · Frame &nbsp;·&nbsp; <a href="../08_presentation.html#/b3">slide ›</a> &nbsp;·&nbsp; <span class="rtm"></span></div>
+      <div class="script">
+        <p>So here's the first thing I'm taking back. In the original video, talking about the firstborn of Egypt — the sons who died in that final plague — I said God <em>murdered</em> them. I'm taking that word back. Not the event. The word.</p>
+        <p>Here's why, and this matters for everything else I'm about to say. Murder isn't just killing. By definition, murder is <em>unjust</em> killing. So the second I call it murder, I've smuggled in a verdict — I've said God acted unjustly. And that is the one thing I do not believe. God took those lives. That is his to do; he gives life and he takes it. It wasn't murder. It was judgment.</p>
+        <p>And that taught me something I'm carrying into the rest of this. A lot of times, the fight isn't actually about the <em>event.</em> It's about the <em>word</em> we wrap around the event — and some words come pre-loaded with guilt. Hold that thought, because we're going to hit it again.</p>
+      </div>
+    </section>
+
+    <!-- B4 -->
+    <section class="beat" id="b4">
+      <div class="beat-h"><span class="bn">BEAT 4</span><h2>What changed — from proving to treasuring</h2></div>
+      <div class="beat-meta">Part I · Frame &nbsp;·&nbsp; <a href="../08_presentation.html#/b4">slide ›</a> &nbsp;·&nbsp; <span class="rtm"></span></div>
+      <div class="script">
+        <p>The third change — I'll take it out of order — isn't about doctrine. It's about me.</p>
+        <p>I told you at the top that the heart of this hasn't changed — and it hasn't. There are words I'd change, and you're watching me change them, but the doctrine stands. What I haven't owned yet is how I was <em>holding</em> it back then. Because watching that first video, it's plain what I was doing: I was trying to prove I was right. Listen to how I talked — <span class="q">"there's no way around it," "no matter how you slice it," "I'm not afraid to say it."</span> I was planting flags. I was so focused on making the case airtight that I rushed right past the thing that matters most. I was treating the sovereignty of God like a position to <em>defend</em> — when it is a treasure to <em>stand on.</em></p>
+        <p>What's grown in me since is mostly one thing: an awareness that <em>I am not God.</em> That his ways are higher than mine, that there are things here that are genuinely beyond me, and that I am standing here representing him — so I'd better tread carefully, and lead with the treasure instead of the flag. The doctrine hasn't moved an inch. I have.</p>
+        <p>So here's my promise for the rest of this video. I'm going to reason as hard and as far as I possibly can — all the way to the edge of what God has actually told us. And then, at the exact point where my understanding runs out, I'm going to stop and tell you, <span class="q">"here's the seam — here's where I worship instead of explain."</span> That's not a cop-out. By the end I think you'll see it's actually <em>required</em> by the answer itself.</p>
+        <p>And — <span class="cue">beat</span> — there's that second word I mentioned. "Author." As in, <em>is God the author of sin?</em> I almost took that one back too, the same way I took back "murdered." But I didn't. I landed somewhere different. And that's the heart of this whole thing, so I'm saving it for the center.</p>
+      </div>
+    </section>
+
+    <!-- B5 -->
+    <section class="beat" id="b5">
+      <div class="beat-h"><span class="bn">BEAT 5</span><h2>The positive case — the apostles’ grammar</h2></div>
+      <div class="beat-meta">Part II · The Case &nbsp;·&nbsp; <a href="../08_presentation.html#/b5">slide ›</a> &nbsp;·&nbsp; <span class="rtm"></span></div>
+      <div class="script">
+        <p><span class="cue">▲ A2 — tightened (same Acts punch, less stacking).</span></p>
+        <p>Before the hard part, I want you to see that I'm not inventing a framework here. I'm copying the way the apostles actually talked.</p>
+        <p>Peter, on the day of Pentecost — Acts 2 — says Jesus was <span class="q">"delivered up according to the <em>definite plan and foreknowledge of God</em>,"</span> and in the very same breath, <span class="q">"you crucified and killed by the hands of lawless men."</span> The plan of God <em>and</em> the wickedness of men, in one sentence, and Peter doesn't flinch. A couple chapters later, the whole church prays it right back: Herod, Pilate, the nations did <span class="q">"whatever your hand and your plan had <em>predestined</em> to take place."</span></p>
+        <p>And it isn't just there. Joseph tells his brothers, <span class="q">"you meant evil against me, but God meant it for good"</span> — one act, two intentions, two verdicts. God calls Assyria <span class="q">"the rod of my anger,"</span> sends them — then judges them for the very arrogance he sent them in. Job loses everything and says, <span class="q">"the Lord gave, and the Lord has taken away."</span> This is the Bible's ordinary grammar. So when I say God ordains sin, I'm not smuggling in something exotic — I'm saying what Scripture says plainly. The hard question was never <em>whether.</em> It's <em>how</em> — and how God stays clean. So let's go there.</p>
+      </div>
+    </section>
+
+    <!-- B6 -->
+    <section class="beat" id="b6">
+      <div class="beat-h"><span class="bn">BEAT 6</span><h2>The hardest question</h2></div>
+      <div class="beat-meta">Part III · The Crux &nbsp;·&nbsp; <a href="../08_presentation.html#/b6">slide ›</a> &nbsp;·&nbsp; <span class="rtm"></span></div>
+      <div class="script">
+        <p><span class="cue">▲ A3 — opening made truer; the "three options" now flagged as not-my-answer and reframed as "half-poison, half-truth."</span></p>
+        <p>Here's the question that, for years, I've watched people throw at this position too lightly — and the one that pressed me harder than any other. I'm not going to overstate it and tell you it shook my faith; it didn't. But I couldn't answer it with a slogan, and I wouldn't let myself try. I had to take it all the way down to the bottom — and what I found at the bottom turned out to be the most solid ground I've got.</p>
+        <p>It's not "why is there evil." That's the easy version. The hard version is about the <em>origin.</em> God made everything "very good." Adam was good — no sin nature, rightly ordered, walking with God. So where in the world did the <em>first</em> disordered desire come from? Where does evil get its start inside a good creature, in a good creation, made by a good God?</p>
+        <p>And watch — there are basically three answers people give, and I want you to feel the blade on each one. Maybe it came from God — but then God's got evil <em>in</em> him, and we've got a real problem. Maybe it came from the creature, all on his own, uncaused — but then the creature is his own little god, an origin point independent of God, and that torches everything I just said about his sovereignty. Or maybe it came from nowhere at all — a brute accident, a thing that happened for no reason — but then the single most important turn in the whole story falls <em>outside</em> God's plan, and we're back to the small God.</p>
+        <p>Now — most people get here and just wave at it. They grab one of those three, live with the damage, and move on. I don't want to do that. And you've probably already noticed my answer isn't any of the three I just knocked down — and that's on purpose. Because here's what took me years to see: each of those three is half poison and half truth. The first one is <em>right</em> that God ordained it — it's just dead wrong that the evil is somehow inside God. The second is <em>right</em> that the evil is the creature's very own — it's just wrong that the creature is some little god acting on his own. And the third is <em>right</em> that there's a floor down there we can't see past — it's just wrong that the floor is meaningless. The real answer isn't a fourth box on the shelf. It's keeping the true half of all three and throwing out the lie in each. So let me build it for you, one piece at a time.</p>
+      </div>
+    </section>
+
+    <!-- B7 -->
+    <section class="beat" id="b7">
+      <div class="beat-h"><span class="bn">BEAT 7</span><h2>Matter vs. form — disordered love</h2></div>
+      <div class="beat-meta">Part III · The Crux &nbsp;·&nbsp; <a href="../08_presentation.html#/b7">slide ›</a> &nbsp;·&nbsp; <span class="rtm"></span></div>
+      <div class="script">
+        <p>Start with what evil even <em>is</em> — because the moment you see it clearly, the origin question changes shape. Look at how the Bible opens. Genesis 1, verse 2: before God speaks a single word, the earth is <span class="q">"without form and void,"</span> and darkness is over the deep. That is not evil — it's <em>unformed.</em> Raw material. And what does God do with it? He <em>orders</em> it. He forms — light from dark, sky from sea, land from water — and then he fills it. The whole six days are God bringing order out of the formless and light out of the dark. And when he is finished, he calls it <span class="q">"very good."</span></p>
+        <p>Now hold that picture, because it tells you exactly what sin is. The very first thing that happens after God finishes his good, ordered world is that a creature <em>dis-orders</em> it. Sin is de-creation. It is the un-making of the order God made — a slide back toward the formless and the dark he had just pushed back. The very word for sin means <span class="q">"to miss the mark"</span> — to fall short of the order that was supposed to be there. So evil was never a thing God manufactured. It is the un-making of what he made — which is exactly why it can never stand on its own. It always needs a prior good to corrupt. There had to be a good, ordered world <em>first</em> for sin to be a dis-ordering of it.</p>
+        <p>So here is the key that finally unlocked the origin question for me: "the desire" that brought Adam down is not one thing. It's two.</p>
+        <p>Think about what Adam and Eve actually wanted. The fruit was <span class="q">"good for food, a delight to the eyes, desirable to make one wise."</span> Every one of those is a <em>real good.</em> Food is good. Beauty is good. Wisdom is good. Wanting them is not, in itself, a sin. That appetite — that's a good motion, and a good motion can come straight from God and from the good nature he gave.</p>
+        <p>So where's the sin? The sin is in the <em>ranking.</em> It's wanting that good <em>more than God,</em> wanting it <em>against</em> what God said. The evil isn't the desire for the fruit. The evil is preferring the fruit to the Father.</p>
+        <p>And here's the thing that changed everything for me: a <em>ranking</em> isn't a substance. A disorder isn't a <em>thing.</em> It's a relationship gone wrong. It's like cold — there's no such thing as cold; cold is just the absence of heat. There's no such thing as darkness; darkness is just the absence of light. Evil is like that. It's not a created thing God had to manufacture. It's good — loved in the wrong order. A privation. A lack of the right ordering that <em>should</em> have been there.</p>
+        <p>And listen to how the Bible describes the very first fall — the one even before Adam. There's a passage in Ezekiel 28 spoken to the king of Tyre, but partway through it lifts into language no human king could ever fit — and Christians have long read it as a window into the fall of <em>Satan himself,</em> the spiritual power behind that throne: <span class="q">"you were blameless in your ways from the day you were created — <em>till iniquity was found in you.</em>"</span> <em>Found.</em> Not "put into you." Not "injected." Not "I made you evil." It was <em>found in you</em> — it arose, from within, as your own. And what was it? Isaiah 14: <span class="q">"I will ascend... I will make myself like the Most High."</span> That's it. That's the first sin in the universe. It's not some exotic new evil substance. It's a creature taking a real good — himself, his own genuine glory — and loving it out of rank. Putting self where God belongs.</p>
+        <p>So when you ask me, "where did Adam's evil desire come from?" — here's my answer, and I think it's a real one, not a dodge: <em>the desire's object was always good and came from God; the disorder was the creature's own failure to rank it rightly — and a failure is a lack, not a thing, so it didn't have to be "made" by anyone.</em> Nothing dark was ever manufactured. Evil is a parasite. It can only ever live off of good that came first.</p>
+      </div>
+    </section>
+
+    <!-- B8 -->
+    <section class="beat" id="b8">
+      <div class="beat-h"><span class="bn">BEAT 8</span><h2>The mechanism — sufficient, not infallible</h2></div>
+      <div class="beat-meta">Part III · The Crux &nbsp;·&nbsp; <a href="../08_presentation.html#/b8">slide ›</a> &nbsp;·&nbsp; <span class="rtm"></span></div>
+      <div class="script">
+        <p>But that raises the next question. If Adam was good, what tipped him? Why did he actually fall?</p>
+        <p>Here's the piece that, for me, made it click. Adam was given grace <em>sufficient</em> to stand. He genuinely could have not sinned. He had everything he needed and everything he was owed — a good nature, a clear command, the real ability to obey. What he was <em>not</em> given was <em>confirming</em> grace — the kind of grace that makes you <em>unable</em> to fall. That grace exists — it's exactly what the saints get in heaven, where we will be free and yet will never sin again — but Adam didn't have it yet.</p>
+        <p>And God withheld it. On purpose. Now hear me carefully, because this is the line everything balances on: <em>withholding is not the same as injecting.</em> God did not pour evil into Adam. He declined to give him an <em>extra</em> gift — a gift Adam was never owed, because grace by definition is unowed. He held back the confirming grace, and a good-but-not-yet-confirmed creature, meeting a real temptation, defected.</p>
+        <p>Was that just? Yes — because God withheld only what he didn't owe; Adam had everything he was owed and chose against it. Is Adam guilty? Completely — because Adam did exactly what Adam most <em>wanted</em> to do. That's the part people miss: this was never God overriding Adam's will like a puppet. God ordained it <em>through</em> Adam's will. Adam reached for that fruit because in that moment he wanted it more than he wanted God. Nobody made him want it. It was his.</p>
+      </div>
+    </section>
+
+    <!-- B9 -->
+    <section class="beat" id="b9">
+      <div class="beat-h"><span class="bn">BEAT 9</span><h2>Why was there a snake?</h2></div>
+      <div class="beat-meta">Part III · The Crux &nbsp;·&nbsp; <a href="../08_presentation.html#/b9">slide ›</a> &nbsp;·&nbsp; <span class="rtm"></span></div>
+      <div class="script">
+        <p>Now — fair question — if Adam's fall came from inside Adam, why was there a serpent in the garden at all? Why a tempter?</p>
+        <p>My answer is one a lot of people flinch at, but I think it's deeply biblical: Satan is an agent of the Lord. He is not a rival. He is not a second god running around loose. Look at the Bible — Satan never does anything off the leash. In Job, <em>God</em> brings him up: <span class="q">"have you considered my servant Job?"</span> Satan has to ask permission for everything. In First Kings, God <em>sends</em> a lying spirit. Paul's thorn is called <span class="q">"a messenger of Satan,"</span> and yet it was <em>given</em> to him, for his good. Satan has to <em>ask</em> to sift Peter. Every single time, Satan is on a leash held by God. That's not dualism — good versus evil, two equal powers slugging it out. There's one God, and even the devil serves his purposes.</p>
+        <p>But — and here's where I have to be honest and go one more level down — the serpent in the garden was <em>already fallen.</em> So the snake isn't actually the first domino. Satan's own rebellion came first. And his fall is the <em>exact same story</em> I just told you about Adam: a good creature, given grace to stand but not yet confirmed, who took a real good — himself — and loved it out of rank. Same privation. One level up. And if you keep pushing back — "well what's behind <em>that?</em>" — eventually you hit the very first defection of the very first creature, and that's the bottom. That's the floor. There's no creature behind it to blame, and God didn't put evil into him — it was <em>found</em> in him. That's where the mystery lives. The snake doesn't escape it; the snake just sits on top of it.</p>
+        <p>And don't let Satan being an "agent" make him innocent. He's not following orders — he's a rebel. He serves God's secret plan while breaking God's revealed command, every step intending evil. He's used; he's not loyal. Same as Pharaoh. Same as the men at the cross. The instrument is fully guilty because the instrument <em>wants</em> the evil — even while God is weaving it toward good. And one more thing: the serpent only ever <em>offered.</em> It couldn't make Adam fall. It set the table; Adam chose to eat. The tempter explains why there was a <em>test</em> — it does not explain why Adam <em>failed</em> it. That part was Adam's own.</p>
+      </div>
+    </section>
+
+    <!-- B10 -->
+    <section class="beat" id="b10">
+      <div class="beat-h"><span class="bn">BEAT 10</span><h2>The resolution — Author, not Pilate</h2></div>
+      <div class="beat-meta"><span class="pk">Keystone · slow down</span> &nbsp;·&nbsp; Part III · The Crux &nbsp;·&nbsp; <a href="../08_presentation.html#/b10">slide ›</a> &nbsp;·&nbsp; <span class="rtm"></span></div>
+      <div class="script">
+        <p>So now we're finally here. The question. <em>Is God the author of sin?</em></p>
+        <p>And I'll tell you where I've landed, after all these years: <strong>yes.</strong> And I almost took that word back, like I took back "murdered" — because it sounds ugly, and a lot of careful people, even people who agree with everything else I'm saying, won't say it. But I realized the word isn't the problem. The <em>smuggled-in meaning</em> is the problem. So instead of running from it, I want to define it exactly.</p>
+        <p>Let me start with the best objection to my own position, and I'll use Pilate. Somebody says: <span class="q">"Look, Pilate never drove a single nail. The soldiers did that. All Pilate did was give the order — he <em>ordained</em> it. And we still say Pilate crucified Jesus, and we still hold him guilty. So don't tell me that God just 'ordaining' sin gets him off the hook — Pilate only ordained it, and Pilate's a murderer."</span></p>
+        <p>And you know what? That's <em>right.</em> Pilate is guilty even though he only ordained it. Which means — listen — the answer to "why isn't God guilty like Pilate" can <em>never</em> be "because God is far away, because God didn't do it with his own hands." That answer is dead on arrival, because Pilate didn't do it with his own hands either, and Pilate's still guilty. Distance doesn't clear you.</p>
+        <p>So if there's a real difference, it can't be distance. It has to be something else. And there is exactly one thing. <em>Pilate ordained that crucifixion as a character inside the story. God ordained it as the Author of the story.</em></p>
+        <p>Think about Shakespeare. Shakespeare is the author of Macbeth murdering the king. Every detail of that murder — the dagger, the blood, the ambition, the timing — Shakespeare willed it. It's <em>entirely</em> his doing; not one drop of that blood spills unless Shakespeare writes it. And yet — is Shakespeare a murderer? Of course not. Macbeth is the murderer. Shakespeare doesn't share one ounce of Macbeth's guilt. Why? Because they're not on the same level. Shakespeare <em>transcends the page.</em> The guilt lives <em>on</em> the page, with the character who actually wills the evil. The author and the character are not playing the same game.</p>
+        <p><em>That's</em> the difference. Pilate is a character — a man in the story, on the same level as the soldiers, under the same law, who <em>wanted</em> the innocent man dead and was <em>obligated</em> not to. So the guilt sticks to him. God is the Author. He's not a bigger character. He's not the strongest being inside the universe pulling strings. He is the one writing the whole thing, from a place that isn't even on the same plane — under no law, because he <em>is</em> the law's source, and the disorder is never in <em>his</em> will, it's in the characters'.</p>
+        <p>So yes — God is the author of sin. <em>In the way Shakespeare authored Macbeth's crime. Not in the way Pilate ordered Christ's death.</em> I'm keeping the word, and I'm refusing the lie that's usually hidden inside it — that "author" means "guilty doer." It doesn't. It means the one who wrote the story — and he wrote it, every dark line of it, for the sake of the redemption it was always building toward.</p>
+        <p>And by the way — this is also why "puppet" is the wrong word. Macbeth isn't a puppet. Inside the play he's the most <em>himself</em> he could be — driven by his own ambition, fully alive, fully responsible. Being written by an author didn't make him a puppet. It made him a character. That's us.</p>
+        <p>One last piece, so you don't think "withholding" was a magic trick. When I say God withheld grace rather than injected evil — I'm not saying God was passive, or that he didn't really cause the fall. He did, and he meant to. What "withholding" tells you is not <em>whether</em> God caused it, but <em>in what way.</em> Think of it like this: a lifeguard who shoves a swimmer under the water is a murderer. A stranger on the beach who simply doesn't dive in to save someone he has no duty to save — even if he could have, even if he watched it happen — is not a murderer. The difference isn't whether they knew. It's the difference between <em>inflicting a harm you're forbidden to inflict</em> and <em>declining to give a rescue you never owed.</em> God is in the second position, not the first. Real cause. Real intention. Completely different moral standing.</p>
+      </div>
+    </section>
+
+    <!-- B11 -->
+    <section class="beat" id="b11">
+      <div class="beat-h"><span class="bn">BEAT 11</span><h2>The seam — name it, then worship</h2></div>
+      <div class="beat-meta">Part III · The Crux &nbsp;·&nbsp; <a href="../08_presentation.html#/b11">slide ›</a> &nbsp;·&nbsp; <span class="rtm"></span></div>
+      <div class="script">
+        <p>Now I promised you I'd tell you exactly where my understanding runs out. Here it is. I won't pretend this is airtight to everybody. There are sharp people who'll say, <span class="q">"this 'author versus character,' 'different plane' business — that's just relabeling. If God determines the character to do it, God's responsible, end of story."</span></p>
+        <p>Here's my honest answer. That "different plane" distinction is not something I made up to wriggle out of this. We use it everywhere — we don't blame the novelist for the villain, we don't jail the lawmaker for the crimes his laws made possible, we don't charge parents with the murders their children grow up to commit. And more than that: the <em>only</em> way to deny it is to drag God down onto our level — to make him just a really big, really powerful <em>thing</em> inside the universe. And that's not God. That's an idol. The whole distinction is <em>required</em> by the fact that God is the Creator and not a creature.</p>
+        <p>But — and this is the seam — <em>exactly how</em> God can write every line of the story, including a free creature's sin, while that freedom and that guilt remain completely the creature's own and never climb up to him... I can <em>show you</em> it's not a contradiction. I can model it. But I cannot see all the way to the bottom of it. And you know why? <em>Because I'm a character.</em> I'm reasoning from inside the story with the only tools a creature has. The fact that I can't fully comprehend how the Author works isn't a hole in the answer — it's exactly what the answer <em>predicts.</em> A God you could fully fit inside your categories would be a God on your level, which is to say, no God at all.</p>
+        <p>And let me show you that even here, at the hardest edge, I don't throw up my hands at the first hard question — I walk as far as the road actually goes. Take the sharpest one there is: why Jacob and not Esau? Why does God set his love on one before either boy has done a single thing? Watch how far we can get. The first thing to see is that the shock isn't that God <em>passed over</em> Esau — it's that he <em>chose Jacob at all.</em> Because the default for every one of us is not salvation that God then withholds; the default is <em>justice we have already earned.</em> So Esau receives justice. Jacob receives mercy. And nobody — nobody — receives injustice. And even there, the way God relates to the two isn't the same: the passing-over is his sovereign call, but the condemnation rests on real, earned guilt that is the creature's own. He <em>gives</em> the good; he <em>withholds</em> only where he owes nothing; and no one is wronged. That's a long way down the road before it ends.</p>
+        <p>But then comes the question underneath all of it — <em>why this person and not that person?</em> Why set his love here and not there? And right there, watch what the Bible does. Paul takes the hardest sovereignty teaching in all of Scripture — Romans 9, 10, 11 — and how does he end it? Not with a tidy proof. He ends it on his face: <span class="q">"Oh, the depth of the riches and wisdom and knowledge of God! How unsearchable his judgments, how inscrutable his ways!... For from him and through him and to him are all things."</span> When somebody pushes that deepest question — <span class="q">"then why does he still find fault, who could resist his will?"</span> — Paul does not hand you a formula. He says, <span class="q">"who are you, O man, to answer back to God?"</span> And that is not a bouncer at the door, and it is not bullying — look how far we just reasoned before we got there. It's the one question whose answer lives in God's secret counsel, and a creature has no place <em>above</em> God to stand and judge from. <span class="q">"The secret things belong to the LORD our God; the things revealed belong to us."</span> I'll reason to the very last inch of what's revealed. And there, I'll worship.</p>
+        <p><span class="cue">▲ A2 — the Romans 8 / golden-chain material moved out of this beat to the new Beat 11.5 (below), to unclutter the seam.</span></p>
+      </div>
+    </section>
+
+    <!-- B11.5 — WHERE THIS LIVES + RE-ANCHOR (new in A2) -->
+    <section class="beat" id="b115">
+      <div class="beat-h"><span class="bn">BEAT 11.5</span><h2>Where this lives — and why I'm dragging you through it</h2></div>
+      <div class="beat-meta"><span class="pk">▲ A2 · the mid-point breather — lift the tone</span> &nbsp;·&nbsp; <span class="rtm"></span></div>
+      <div class="script">
+        <p><span class="cue block">Breathe here. Warm, pastoral. This is the rest stop before the back half — and it relocates the Romans 8 material out of Beat 11.</span></p>
+        <p>I know that was a climb. If your head is tired right now — good. So was mine the first time I worked through it. So before we go one step further, let me do two things: show you <em>where</em> all of this lives, and remind you <em>why</em> I'm dragging you through it.</p>
+        <p>Where it lives: not in some dark corner of the Bible reserved for theologians. One chapter <em>before</em> all that hard teaching about Jacob and Esau, Paul writes what may be the most comforting words ever put on a page — Romans 8. That God works <em>all things</em> together for the good of those who love him. That everyone he foreknew, he predestined, and called, and justified, and — listen — already, as good as done, <em>glorified.</em> An unbreakable chain, running from before you were born all the way to glory. That nothing in all creation can separate you from his love. And that hard chapter 9 everyone fights about? It's there to <em>defend</em> chapter 8. Because you don't <em>get</em> "all things work together for good" unless God is sovereign over <em>all</em> things — the dark ones included. The hard doctrine isn't the enemy of the comfort. It's the <em>floor</em> the comfort stands on.</p>
+        <p>And that's the whole reason I'm taking you through the hard parts. Not to win a debate. It's because this — right here — is the floor you're going to stand on when the worst day of your life comes. And a shaky floor will not hold you then.</p>
+        <p>So here's what's left. Let me clear away the biggest objections — quickly, honestly — so that when I tell you why this isn't just an argument to me, there's nothing nagging at the back of your mind. Then we'll get to the part that actually changed me.</p>
+      </div>
+    </section>
+
+    <!-- B12 -->
+    <section class="beat" id="b12">
+      <div class="beat-h"><span class="bn">BEAT 12</span><h2>Striking the rival views</h2></div>
+      <div class="beat-meta">Part IV · The Flanks &nbsp;·&nbsp; <a href="../08_presentation.html#/b12">slide ›</a> &nbsp;·&nbsp; <span class="rtm"></span></div>
+      <div class="script">
+        <p><span class="cue block">Faster pace here. Names of these views are in the description — landing one honest blow each.</span></p>
+        <p>Some people say God doesn't <em>ordain</em> sin, he only <em>permits</em> it. But the one doing the permitting designed the entire stage, knew exactly what would happen on it, and raised the curtain anyway. That's not a clean escape — it's the same hook with a softer name.</p>
+        <p><span class="cue">▲ A3 — the #1 objection about suffering, answered far more fully.</span> But the deeper version of that is the number-one thing people say about suffering: <span class="q">God had to allow the possibility of sin — otherwise love is coerced, and we're all just robots.</span> It feels airtight. It isn't — and here are three witnesses against it. God himself is the freest, most loving being there is, and he <em>cannot</em> sin, and never could. The place you and I will be most free — heaven — is the very place we will be <em>unable</em> to sin, and not one ounce of our love there will be fake. And the purest love ever offered to the Father, the love of Jesus, came from a man who <em>could not</em> sin. None of the three is a robot. So the possibility of sin was never the price of love — and notice they've got freedom backwards: the power to sin isn't the crown of freedom, it's the crack in it. The freest you will ever be is the day you finally <em>can't.</em> God never <em>had</em> to allow sin to get real love — a world of free hearts who never sin is exactly where this whole story is headed. He didn't permit sin because love demanded it; he ordained it, on purpose, for something greater.</p>
+        <p><span class="fill">[Optional jab — links to Alianna:]</span> And honestly, even if that answer worked, it would only cover the evil people <em>choose.</em> It can't say a word about the cancer, the earthquake, the child lost in the womb — it can't come within a mile of the suffering that actually breaks us. Mine can.</p>
+        <p>Then the cleverer version: God simply <em>knows</em> what every creature <em>would</em> freely do, and picks the world he wants without causing anyone's sin. But ask the one question that sinks it — those facts about what you "would freely do," where do they come from? They're supposed to be true <em>before</em> God decides anything, and he just... reads them. But I opened by saying God is the font of <em>all</em> knowledge. There's no truth floating around that God didn't author and is now consulting like a rulebook he didn't write. God doesn't get <em>dealt</em> a hand of possible worlds and play it well. He prints the deck.</p>
+        <p>And the last one — that God doesn't even <em>know</em> the free future. Then he didn't know who he was dying for. On the cross there was no <em>name</em> in his mind, just a faceless pool of maybes — no actual salvation, only potential. That's not the Shepherd who calls his own by name. One sentence is all it deserves.</p>
+      </div>
+    </section>
+
+    <!-- B13 -->
+    <section class="beat" id="b13">
+      <div class="beat-h"><span class="bn">BEAT 13</span><h2>The verses that cut against me</h2></div>
+      <div class="beat-meta">Part IV · The Flanks &nbsp;·&nbsp; <a href="../08_presentation.html#/b13">slide ›</a> &nbsp;·&nbsp; <span class="rtm"></span></div>
+      <div class="script">
+        <p>I'd be a coward if I skipped the verses that get fired at me, so let's take them straight.</p>
+        <p><span class="q">"God tempts no one"</span> — James 1. People wave it like it ends the conversation. But read the very next verse: <span class="q">"each person is tempted when he is lured by <em>his own</em> desire."</span> James isn't saying God's hand is off the human heart — Proverbs says the king's heart is a stream of water in God's hand, he turns it wherever he wants. James is doing something else: he's shutting down <em>blame-shifting.</em> He's saying you can never look up and say "God made me crave this" — because the <em>disorder</em> in your craving is <em>yours.</em> James answers "whose fault is the desire?" — yours. I'm answering "is the event outside God's plan?" — no. Two different questions. Both true.</p>
+        <p>And while I'm here — let me guard one flank. When I say "be careful judging God by our categories of good and evil," I am <em>not</em> saying good is just whatever God happens to feel like, that he could declare evil good on a whim. Somebody always asks, <span class="q">"so if God commanded something monstrous, would it be good?"</span> No. Because the standard of good isn't a rule God floats above and could flip — the standard of good is God's own <em>nature.</em> He can't act against himself. So we're not measuring him by a yardstick outside him; his character <em>is</em> the yardstick.</p>
+        <p><span class="q">"God is light, in him is no darkness"</span> — right, and that's about his <em>character,</em> not his <em>decree.</em> A judge who hands down a hard sentence isn't a criminal. Ordaining a dark event doesn't put darkness in him. <span class="q">"He takes no pleasure in the death of the wicked"</span> — also true; he has no delight in death <em>as death.</em> But Isaiah 53 says it <em>pleased</em> the Lord to crush his own Son — because of the <em>justice and the glory and the rescue</em> that death accomplished. Same event, two aspects. He commands one thing and ordains another, and that's not a contradiction — you watched it happen in Gethsemane.</p>
+        <p>And one I'll handle before someone misuses it: Isaiah 45, <span class="q">"I make peace and create evil"</span> in the old King James. That Hebrew word is <em>ra</em> — it means <em>calamity,</em> disaster, judgment — not moral evil. God creates <em>calamity.</em> Use the verse for that. Don't make it say more than it says.</p>
+      </div>
+    </section>
+
+    <!-- B13.5 -->
+    <section class="beat" id="b135">
+      <div class="beat-h"><span class="bn">BEAT 13.5</span><h2>The biggest moral charge — “isn’t this just a narcissist?”</h2></div>
+      <div class="beat-meta">Part IV · The Flanks &nbsp;·&nbsp; <a href="../08_presentation.html#/b135">slide ›</a> &nbsp;·&nbsp; <span class="rtm"></span> &nbsp;·&nbsp; <span class="pk">sets up the Beat 15 knockout</span></div>
+      <div class="script">
+        <p>There's one more objection, and it isn't about a verse — it's about God's <em>character</em>, and it's the one that makes people most uncomfortable. It goes like this: <span class="q">"You keep saying God does all of this 'for his glory' — ordains the fall, the suffering, all of it, so he can show himself off. That's not a good God. That's a cosmic narcissist running the universe to feed his own ego. If a man created people just to make himself look magnificent, you'd call him a monster."</span></p>
+        <p>I want to take that one head-on, because if seeking your own glory is the worst kind of vanity in us, why isn't it vanity when God does it?</p>
+        <p>Here's why. Seeking your own glory is a vice <em>in you and me</em> for exactly one reason: we are not the highest good. When I make everything about me, I'm lying — because I'm not actually supreme — and I'm robbing you, because I'm aiming you at something less than the best. But God <em>is</em> the highest good. He is the most beautiful, most satisfying reality there is. So when God points you to himself, he isn't lying — he's telling you the truth. And he isn't robbing you — he's giving you the one thing that can actually fill you. In fact, if God pointed you to anything <em>less</em> than himself as your highest joy, <em>that</em> would be the unloving thing to do. So it was never that God gets a special pass to be vain. It's that it isn't vanity at all — not when the One at the center really is the center.</p>
+        <p>But the real answer to this — the knockout — I'm saving for the very end, because there's a single fact that no narcissist in the history of the world has ever been able to claim. Hold onto the question; I'll close the loop.</p>
+      </div>
+    </section>
+
+    <!-- B14 -->
+    <section class="beat" id="b14">
+      <div class="beat-h"><span class="bn">BEAT 14</span><h2>Why it matters — Alianna</h2></div>
+      <div class="beat-meta"><span class="pk">The heart · slow, tender</span> &nbsp;·&nbsp; Part V · Payoff &nbsp;·&nbsp; <a href="../08_presentation.html#/b14">slide ›</a> &nbsp;·&nbsp; <span class="rtm"></span></div>
+      <div class="script">
+        <p>Now let me tell you why I would stake all of this — why it isn't just an argument to me.</p>
+        <p><span class="cue block">Slow down. This is the heart.</span></p>
+        <p>We lost a child. Alianna — one of ours, who didn't make it through the pregnancy. And I want to tell you what I found in the middle of that, because it's the whole reason I care about getting this right.</p>
+        <p>Every other way of thinking about evil had only two things to offer me in that moment. Either: God didn't want this, it slipped past him, it's a tragedy he'll try to clean up. Or: God allowed it but had nothing to do with it. And both of those left me holding something <em>random.</em> Something <em>wasted.</em> A wound for no reason.</p>
+        <p>But if what I've been telling you is true — then I could stand in that loss and know: this was not an accident. This did not slip past him. This was not for nothing. It was not random, and it will not be wasted, because it came from the hand of a God who was writing something I can't fully see yet. <span class="cue">Beat.</span> That's what it means to trust him in the dark — not that it stops hurting, but that you know the hand it came from is good, and you don't need him to explain himself before you'll trust him. That is not a colder God. That is the only One strong enough to be trusted with your very worst day. A God who only reacts to evil can promise to clean it up afterward. A God who <em>authored</em> the story can promise it had a purpose from before the foundation of the world. I needed the second God. I think, when it's your turn, you will too.</p>
+      </div>
+    </section>
+
+    <!-- B15 -->
+    <section class="beat" id="b15">
+      <div class="beat-h"><span class="bn">BEAT 15</span><h2>The cross vindicates it</h2></div>
+      <div class="beat-meta"><span class="pk">Peak · cash the narcissism knockout</span> &nbsp;·&nbsp; Part V · Payoff &nbsp;·&nbsp; <a href="../08_presentation.html#/b15">slide ›</a> &nbsp;·&nbsp; <span class="rtm"></span></div>
+      <div class="script">
+        <p>And if you want to know whether this is a monstrous idea or a beautiful one, don't look at me — look at the cross.</p>
+        <p>There's a serpent in the garden at the beginning, and there's a serpent at the cross at the end. Luke says Satan entered Judas. The rulers, the mob, the soldiers — they do their absolute worst, every one of them intending evil. And what is it? It's <span class="q">"whatever God's hand and plan had predestined to take place."</span> The chief tempter, the agent on the leash, drives the very nail — and in doing it, crushes his own head, exactly like God promised in Genesis 3. The worst sin ever committed is the very thing that saves the world.</p>
+        <p>So why was there a snake in the garden? <span class="cue">Beat.</span> Because the Lamb was slain before the foundation of the world. There had to be a fall, for there to be a Redeemer — and God so wanted to be known as a Redeemer, to show you a love and a mercy and a grace you could not have seen any other way, that he wrote it all in. Evil has a purpose. It is under his thumb. And it always, always bends toward his glory and the good of those he calls.</p>
+        <p>And that is the answer to the ugliest charge anyone throws at this — that a God who does everything for his own glory must be a cosmic narcissist. Remember the fact I promised you, the one no narcissist in history has ever had? Here it is. Every tyrant, every egomaniac, makes <em>other people</em> pay for his glory. This God paid for his glory <em>himself.</em> He stepped down into his own story, for people who were his <em>enemies</em>, and took on a death so degrading that Rome wouldn't even use it on its own citizens — let alone a king, let alone the King of Kings. A narcissist crucifies others to feel magnificent. Our God let himself be crucified to make his enemies into his children. That is not ego. That is the deepest love this universe has ever seen.</p>
+      </div>
+    </section>
+
+    <!-- B15.5 -->
+    <section class="beat" id="b155">
+      <div class="beat-h"><span class="bn">BEAT 15.5</span><h2>“Then why bother?” — why evangelize, why pray</h2></div>
+      <div class="beat-meta">Part V · Payoff &nbsp;·&nbsp; <a href="../08_presentation.html#/b155">slide ›</a> &nbsp;·&nbsp; <span class="rtm"></span></div>
+      <div class="script">
+        <p>Maybe you've been listening to all of this and thinking: okay — if God has ordained everything, who's saved, who's lost, every outcome — then why do anything? Why preach? Why pray? Why try? Just sit back and let the script run.</p>
+        <p>Here's what that misses. God doesn't only ordain the <em>ends</em> — he ordains the <em>means</em> to those ends, and they come as one package. He didn't just ordain that his people would be saved; he ordained that they'd be saved <em>through</em> someone opening their mouth and telling them about Jesus. <span class="q">"Faith comes by hearing, and hearing through the word of Christ."</span> So your evangelism isn't an optional extra bolted onto the plan — it <em>is</em> the road the plan runs on. Prayer is the same: God ordains to give <em>in answer to</em> his people asking him.</p>
+        <p>Fatalism says, <span class="q">"the outcome's already fixed, so what you do doesn't matter."</span> But God never fixed the outcome <em>apart from</em> the means he appointed to reach it. So I don't evangelize <em>less</em> because God is sovereign — I evangelize with more <em>confidence</em>, because whether someone is saved doesn't finally rest on my cleverness or my nerve; it rests on him. Paul said it in a single breath: <span class="q">"I endure everything for the sake of the elect, that they also may obtain salvation."</span> Sovereignty and sweat, side by side. The God who ordained the harvest is the same God who ordained that you would go out into the field.</p>
+      </div>
+    </section>
+
+    <!-- B16 -->
+    <section class="beat" id="b16">
+      <div class="beat-h"><span class="bn">BEAT 16</span><h2>Invitation + posture</h2></div>
+      <div class="beat-meta">Part V · Payoff &nbsp;·&nbsp; <a href="../08_presentation.html#/b16">slide ›</a> &nbsp;·&nbsp; <span class="rtm"></span></div>
+      <div class="script">
+        <p>So — three things changed. I took back "murdered." I kept "author," and told you exactly what I mean by it. And I hope you can hear that I'm holding all of this differently than I did years ago — not with less conviction, but with more awareness that I am a small creature talking about an infinite God, and that there's a seam where I stop explaining and start worshiping.</p>
+        <p>And let me bring it back to where we started, because this was never about winning an argument. If God authors the whole story — every line of it, even the darkest — then three things become possible that are impossible any other way. You can walk <em>through</em> suffering without it ever being wasted. You can <em>trust</em> him in the dark, because the dark is his too. And you can have <em>joy</em> — not in spite of this, but <em>because</em> of it — the kind that doesn't wait for the storm to pass. Scripture tells you to count it joy when you meet trials, to rejoice even in suffering, to say with Habakkuk, <span class="q">"though the fig tree does not blossom... yet I will rejoice in the Lord."</span> That is not a colder faith. It is the only one strong enough to sing in the storm.</p>
+        <p><span class="fill">[Optional, for family — keep or cut:]</span> And if I can say one thing to my own — if one of my children, or my wife, is ever watching this when I'm not in the room: of everything I could ever leave you, this is what I most want you to have. Not my arguments. <em>This.</em> The God who authored the story, who never wastes a wound, who is the floor under your very worst day. Stand on him.</p>
+        <p>If you think I've got it wrong — <em>especially</em> if you think "author" goes too far — I genuinely want to hear it in the comments. Tell me where you think I've missed it. And if you want me to go deeper on any one piece of this — the free-will stuff, the problem of why God chooses one and not another, any of it — say so, and I'll do a whole video on it.</p>
+        <p>Thanks for going to the hard place with me. I hope it was edifying.</p>
+      </div>
+    </section>
+
+    <!-- Edit notes -->
+    <div class="editnotes">
+      <h3>Edit notes (for review — not spoken)</h3>
+      <ul>
+        <li><strong>Runtime:</strong> full read ≈ 32–38 min (two beats added: 13.5 narcissism, 15.5 why-evangelize). To trim toward ~20: tighten Beat 5, shorten Beat 12, compress Beat 13 to James + Isaiah 45 only, and — if needed — pull 13.5 / 15.5 back out to the objection-prep doc.</li>
+        <li><strong>Confirm:</strong> child's name (Alianna, confirmed); original video link; whether you want Beat 12's view-names <em>spoken</em> or only in the description.</li>
+        <li><strong>Setup/payoff:</strong> Beat 13.5 deliberately defers its knockout to the Beat 15 cross — keep that promise/payoff intact across the two if you cut.</li>
+        <li><strong>The three peaks</strong> — Beat 10 (Author/Pilate), Beat 14 (Alianna), and the Beat 15 cross knockout — slow down, less argument, more weight.</li>
+      </ul>
+    </div>
+
+  </div>
+  </main>
+</div>
+
+<script>
+  // ===== Reading-time estimates (≈130 wpm spoken) =====
+  const WPM = 130;
+  function fmt(min){ if(min < 1) return Math.round(min*60)+'s'; return Math.round(min)+' min'; }
+  let totalWords = 0;
+  document.querySelectorAll('.beat').forEach(beat=>{
+    const sc = beat.querySelector('.script');
+    if(!sc) return;
+    const words = (sc.innerText.match(/\S+/g)||[]).length;
+    totalWords += words;
+    const min = words / WPM;
+    const m = beat.querySelector('.rtm'); if(m) m.textContent = '~'+fmt(min)+' spoken';
+    const id = beat.id;
+    const link = document.querySelector('.toc a[href="#'+id+'"] .rt');
+    if(link) link.textContent = fmt(min);
+  });
+  document.getElementById('totalRt').textContent = '~'+Math.round(totalWords/WPM)+' min total';
+
+  // ===== Font size =====
+  let rs = 22;
+  function setRs(v){ rs = Math.max(16, Math.min(34, v)); document.documentElement.style.setProperty('--rs', rs+'px'); }
+  document.getElementById('aPlus').onclick = ()=>setRs(rs+2);
+  document.getElementById('aMinus').onclick = ()=>setRs(rs-2);
+
+  // ===== Toggle director cues =====
+  const nt = document.getElementById('notesToggle');
+  nt.onclick = ()=>{
+    document.body.classList.toggle('hide-notes');
+    const off = document.body.classList.contains('hide-notes');
+    nt.textContent = 'Director cues: ' + (off?'off':'on');
+    nt.classList.toggle('on', !off);
+  };
+
+  // ===== Teleprompter auto-scroll =====
+  let playing = false, raf = null;
+  const speedEl = document.getElementById('speed');
+  const playBtn = document.getElementById('play');
+  function step(){
+    if(!playing) return;
+    window.scrollBy(0, parseFloat(speedEl.value));
+    if((window.innerHeight + window.scrollY) >= document.body.scrollHeight - 2){ stop(); return; }
+    raf = requestAnimationFrame(step);
+  }
+  function start(){ playing = true; playBtn.textContent='⏸ Pause'; playBtn.classList.add('on'); raf = requestAnimationFrame(step); }
+  function stop(){ playing = false; playBtn.textContent='▶ Play'; playBtn.classList.remove('on'); if(raf) cancelAnimationFrame(raf); }
+  playBtn.onclick = ()=> playing ? stop() : start();
+  // tap space to play/pause
+  document.addEventListener('keydown', e=>{ if(e.code==='Space' && e.target===document.body){ e.preventDefault(); playing?stop():start(); } });
+
+  // ===== Scrollspy: highlight current beat in TOC =====
+  const tocLinks = Array.from(document.querySelectorAll('.toc a'));
+  const beats = Array.from(document.querySelectorAll('.beat'));
+  function spy(){
+    let cur = beats[0];
+    const y = window.scrollY + 90;
+    for(const b of beats){ if(b.offsetTop <= y) cur = b; }
+    tocLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+cur.id));
+  }
+  window.addEventListener('scroll', spy, {passive:true});
+  window.addEventListener('load', spy);
+  spy();
+</script>
+</body>
+</html>
