@@ -251,6 +251,8 @@ And let me bring it back to where we started, because this was never about winni
 
 And to the rest of you — here is how you actually live in a world like this. Stop trying to control the outcome; that was never your job, it's his. Your job is to do what's right and leave the results in his hands. If doing right costs you — if obedience brings pain — endure it, and endure it with joy, because you know whose hands you're in. And if it costs you nothing, take that with the same open hand. We are not God. We don't get to write the ending, and we were never meant to. So learn to be content — no matter what you think the future holds, or even what you're sure it holds — content to serve, faithfully, a God who is good, and all-knowing, and all-powerful, and all-loving. Do the next right thing. Leave the rest to him.
 
+And remember where we started — you in a room beside someone you love, desperate to say something *true* and not knowing what? This is what I wanted to put in your hands, so that one day you'd have something to put in theirs. Not a cliché. Not "everything happens for a reason." A God who authored the story, who wastes nothing, who can be trusted with the very worst. So the next time you're standing in that room, you won't be empty-handed.
+
 If you think I've got it wrong — *especially* if you think "author" goes too far — I genuinely want to hear it in the comments. Tell me where you think I've missed it. And if you want me to go deeper on any one piece of this — the free-will stuff, the problem of why God chooses one and not another, any of it — say so, and I'll do a whole video on it.
 
 Thanks for going to the hard place with me. I hope it was edifying.
