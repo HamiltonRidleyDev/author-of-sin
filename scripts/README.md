@@ -14,10 +14,11 @@ A working repository of script drafts for shaping the final video. Read, compare
 - **`script-A3.md`** — *Anthropic draft 3.* Built on A2; refines §6 (truer opening + the "three options" trap), §7 (names Satan), and §12 (a fuller answer to the free-will objection).
 - **`script-A4.md`** — *Anthropic draft 4.* Built on A3; folds in the convergent low-risk wins from the external reviews — a "what this is and isn't" framing line, the analogy marked a *window, not a proof* (§10), a sharper seam line (§11), and a reflective-delivery cue (§12).
 - **`script-A5.md`** — *Anthropic draft 5.* Built on A4; the opening now faces *outward* (the friend you can't comfort) as well as inward — the same question, doubled.
-- **`script-A6.md`** — *Anthropic draft 6 (current).* A **lean pass** on A5 (same order): trims the Stakes, §3, the §11 vessel-machinery, §12 free-will, §13 (to two verses), and the §16 recap. A few verses/points were pulled from the video — flagged at the top of the file. No concept lost; defensive depth relocated to the description / objection-prep.
+- **`script-A6.md`** — *Anthropic draft 6.* A **lean pass** on A5 (same order): trims the Stakes, §3, the §11 vessel-machinery, §12 free-will, §13 (to two verses), and the §16 recap. A few verses/points were pulled from the video — flagged at the top of the file. No concept lost; defensive depth relocated to the description / objection-prep.
+- **`script-A7.md`** — *Anthropic draft 7 (current).* Rebuilds the **opening** on top of A6's lean. The Stakes hook moves from "somewhere down the road" to an *in-the-room* cold open — and, more importantly, its **promise changes from an *answer* to a *Person*** ("Not an answer. Him."), so it matches what the seam delivers (worship in mystery, not a resolution). The close now **names the gap** it fills (how people should see God and evil), so it reads as an explanation, not a sermon. Two lines pulled from the Stakes — flagged at the top of the file.
 - **`script-X1.md`** — *Grok's refinement of A3.* A near-verbatim A3 with a few small humility/clarity tweaks; the ones worth keeping were folded into A4.
 
-> **Read in a browser:** every Anthropic version ships as an HTML read-through (**`script-A1.html`** … **`script-A6.html`**) — with a beat-by-beat table of contents, runtime estimates, a director-cue toggle, and a teleprompter auto-scroll. Far easier on the eyes than raw markdown. Each version tags its own changed beats (**▲ A2** … **▲ A6**) so you can jump straight to what's new in it. (Open the `.html` files directly in any browser.)
+> **Read in a browser:** every Anthropic version ships as an HTML read-through (**`script-A1.html`** … **`script-A7.html`**) — with a beat-by-beat table of contents, runtime estimates, a director-cue toggle, and a teleprompter auto-scroll. Far easier on the eyes than raw markdown. Each version tags its own changed beats (**▲ A2** … **▲ A7**) so you can jump straight to what's new in it. (Open the `.html` files directly in any browser.)
 
 ---
 
@@ -97,3 +98,20 @@ A6 keeps A5's **order and every concept** but trims execution for focus and leng
 **⚠ Pulled from the video — re-evaluate (add back, or address in the description / objection-prep):** **1 John 1:5** and **Habakkuk 1:13** (redundant with §10's Author/character resolution), **Isaiah 45:7** (defensive housekeeping), the **voluntarism guardrail** ("would evil be good if commanded?" — a concept, not a verse), and the **natural-evil jab** in §12 (was optional; links to Alianna). All listed at the top of `script-A6.md`.
 
 **Not done (held for a later pass):** a light repetition trim, prose-tightening in §4/§5, and the flanks-before-seam reorder (rejected on purpose — see above).
+
+---
+
+## Changelog — A6 → A7 (the opening rebuilt)
+
+A7 changes **only the opening (the Stakes beat)** — everything downstream inherits A6 unchanged. The driver: we resolved that the video doesn't land on *an answer that makes suffering bearable* — it lands on **knowing and worshiping God for who he is, despite what comes.** The old opening quietly promised the wrong thing (*"a third answer… the only one that can hold your weight"*), so the seam (reason to the edge, then worship) would have read as a bait-and-switch. A7 makes the opening's promise match the ending's payoff.
+
+- **In-the-room cold open.** *"Somewhere down the road, life is going to hand you…"* (future/hypothetical — the flat spot) → *"You're standing in a room you never wanted to enter…"* (present-tense presence). Delivery cue added: *plain, don't milk it* — the anti-sappy weapon is under-delivery, not less emotion.
+- **The promise is a *Person*, not an *explanation*.** The turn now reads *"What I do have is better than an explanation… Not an answer. Him."* — and the sovereignty is carried in three words, *"somehow, on purpose"* (mystery + ordination, the seam in miniature).
+- **Names the gap.** The close states the mission: *"most of us are carrying a picture of God and evil that cracks right when we need it most… I want to hand you a truer one… Someone solid enough to stand on."* This is what keeps it an *explanation* (filling a real-world gap in how people see God and evil), not a sermon.
+- **Merged for lean.** Old 4 paragraphs → tighter beats. Cut the duplicated "tidy philosophy / shatters under weight" (the new refusal beat owns it) and the weight-metaphor double. **Kept:** the two-minutes hook, the purpose triad (suffering · trust · joy), and the "ordains all / stays good / you stay responsible" reassurance.
+
+**⚠ Pulled from the Stakes — re-evaluate (add back, or leave as-is):**
+- The *"if he is… it is not random, it is not wasted"* line — true to the doctrine, but it's the instrumental frame we deliberately moved away from in the opening; Romans 8 (Beat 11.5) still carries "God works it together for good" later in the video.
+- The explicit hook question *"is God actually in control of this? Or not?"* — the rebuilt turn *asserts* the answer (he's "holding even this… on purpose") instead of posing it. A strong, on-topic line; easy to restore if you want the interrogative hook back.
+
+**Note:** A7 is the recording candidate; **A6 stays frozen** for side-by-side (the opening is the only diff).
