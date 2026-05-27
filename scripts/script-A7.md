@@ -2,11 +2,12 @@
 
 > Built on A6 — **the opening (Stakes) is rebuilt.** The promise shifts from *"an answer that holds your weight"* to *"a Person worth trusting when you get no answer at all"* — matching what the seam actually delivers — and it now names the gap it's filling (how people should see God and evil), so it reads as an *explanation*, not a sermon. Everything else inherits A6's lean. Full history (A1 → A7) in `scripts/README.md`. **Order unchanged** (the §10→§11 keystone→seam pairing kept on purpose).
 > `[brackets]` = personalize or decide. Pacing notes in *(italics)*.
-> **New in A7 — the opening rebuilt (promise + posture):**
+> **New in A7 — opening rebuilt + close sharpened (promise + posture):**
 > - **In-the-room cold open** replaces "somewhere down the road" — present-tense, plain (delivery cue: *don't milk it*).
 > - **The promise is a Person, not an explanation** — "Not an answer. Him." — so the open no longer over-promises a resolution the video withholds at the seam.
 > - **Names the gap** — "most of us carry a picture of God and evil that cracks right when we need it most… I want to hand you a truer one" — frames the video as filling a real-world gap, not preaching.
 > - **Merged for lean** — the old 4-paragraph Stakes folded into tighter beats; cut the duplicated "tidy philosophy / shatters under weight" (the new refusal beat owns it). Purpose triad (suffering · trust · joy) and the "ordains all / stays good / you stay responsible" reassurance both kept.
+> - **Close (§16) enhanced — now answers *why* it holds.** "everything happens for a reason" reframed as *true but drained of the Person* ("a reason can't hold you; a Person can"); God as the Author with bloody hands (the cross = the worst thing made the world's rescue), not a clean-handed shot-caller; comfort grounded in a long line of mourners. **Adds Matthew 5:4.** Callback tightened to echo the open.
 >
 > **⚠ Removed from the Stakes — re-evaluate:** (1) the *"not random, not wasted"* line — true to the doctrine, but it's the instrumental frame we moved away from; Romans 8 (Beat 11.5) still carries "God works it for good." (2) the explicit hook question *"is God actually in control of this? Or not?"* — the new turn *asserts* the answer ("holding even this… on purpose") instead of posing it. Both easy to restore.
 >
@@ -268,7 +269,11 @@ And let me bring it back to where we started, because this was never about winni
 
 And to the rest of you — here is how you actually live in a world like this. Stop trying to control the outcome; that was never your job, it's his. Your job is to do what's right and leave the results in his hands. If doing right costs you — if obedience brings pain — endure it, and endure it with joy, because you know whose hands you're in. And if it costs you nothing, take that with the same open hand. We are not God. We don't get to write the ending, and we were never meant to. So learn to be content — no matter what you think the future holds, or even what you're sure it holds — content to serve, faithfully, a God who is good, and all-knowing, and all-powerful, and all-loving. Do the next right thing. Leave the rest to him.
 
-And remember where we started — you in a room beside someone you love, desperate to say something *true* and not knowing what? This is what I wanted to put in your hands, so that one day you'd have something to put in theirs. Not a cliché. Not "everything happens for a reason." A God who authored the story, who wastes nothing, who can be trusted with the very worst. So the next time you're standing in that room, you won't be empty-handed.
+And remember where we started — you in a room beside someone you love, with nothing true that felt big enough to say? This is what I wanted to put in your hands, so that one day you'd have something to put in theirs.
+
+Not a cliché. And here's the strange part: "everything happens for a reason" isn't wrong — it's true. It's just our whole message with the life drained out of it: a reason, with no one behind it. And a reason can't hold you. A Person can. So see him as he really is — not a shot-caller with clean hands who signed off on your pain from a safe distance, but the Author of every line, even the darkest. He wastes nothing. He took the worst thing that has ever happened and made it the rescue of the world — and he wrote himself right into the middle of it. That is a God who can be trusted with your worst.
+
+And the promise over that whole long line of mourners — every generation reaching back before you — has never once broken: *blessed are those who mourn, for they shall be comforted.* You are not the first to stand in that room. And not one of those who went ahead of you, who trusted him in the dark, was — in the end — left without comfort. So the next time you're the one standing in that room, you won't be empty-handed.
 
 If you think I've got it wrong — *especially* if you think "author" goes too far — I genuinely want to hear it in the comments. Tell me where you think I've missed it. And if you want me to go deeper on any one piece of this — the free-will stuff, the problem of why God chooses one and not another, any of it — say so, and I'll do a whole video on it.
 
